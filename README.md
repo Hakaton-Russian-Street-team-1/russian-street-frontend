@@ -14,7 +14,7 @@
 ## Сведения о команде:
 
 1. Козлов Иван - Профиль на GitHub [https://github.com/Karez79](https://github.com/Karez79)
-2. 
+2. Пантелеев Николай - Профиль на GitHub https://github.com/GitNikolas
 
 ## Макет:
 
