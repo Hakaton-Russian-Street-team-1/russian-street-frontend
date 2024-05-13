@@ -4,7 +4,7 @@ import { Menu } from '../Menu/Menu';
 import logo from '../../../images/Logo.svg';
 export function Header() {
   return (<header className='header'>
-    <img src={logo}/>
+    <img className='header__logo' src={logo}/>
     < Menu />
   </header>)
 }
