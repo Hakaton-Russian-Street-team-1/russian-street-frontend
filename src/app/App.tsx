@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
+import  { Header, Footer } from './components/Components';
 
 function App() {
   return (<div className='page'>
