@@ -30,6 +30,13 @@ module.exports = {
         exclude: /node_modules/,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.(gif|png|jpg|jpeg|svg)?$/,
+        loader: 'file-loader',
+        options: {
+          name: 'assets/img/[name].[ext]',
+        },
+      },
     ],
   },
   plugins: [
