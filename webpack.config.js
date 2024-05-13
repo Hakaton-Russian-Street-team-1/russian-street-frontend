@@ -9,6 +9,7 @@ module.exports = {
   entry:  path.resolve(__dirname, './src/index.tsx'),
   mode: "development",
   devServer: {
+    historyApiFallback: true,
     port: 3000,
     open: true,
     headers: {
