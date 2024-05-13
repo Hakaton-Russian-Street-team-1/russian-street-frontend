@@ -13,7 +13,7 @@
     text-transform: uppercase;
 }
 
-.events-calendar__date-list{
+.events-calendar__date-menu{
     display: flex;
     padding: 0;
     margin: 0;

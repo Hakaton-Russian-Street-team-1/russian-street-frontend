@@ -12,15 +12,15 @@ export function UseCalendar() {
 
     function prevDaysClick() {
         if(prevDays > 0) {
-            setPrevDays(state => state -= 14);
-            setNextDays(state => state -= 14);
+            setPrevDays(state => state -= 12);
+            setNextDays(state => state -= 12);
         }
     }
 
     function nextDaysClick() {
         if(nextDays < totalDays.length){
-            setPrevDays(state => state += 14);
-            setNextDays(state => state += 14);
+            setPrevDays(state => state += 12);
+            setNextDays(state => state += 12);
         }
     }
 

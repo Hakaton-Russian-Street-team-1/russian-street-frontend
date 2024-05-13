@@ -11,16 +11,16 @@ export function EventsCalendar() {
   return (<section className='events-calendar'>
     <h3 className='events-calendar__title'>Календарь мероприятий Июнь, 2024</h3>
    
-    <ul className='events-calendar__date-list list-style'>
+    <div className='events-calendar__date-menu'>
 
         <ArrowButton direction='left' changeDate={prevDaysClick}/>
 
-        {days.map(day => ( <li key={day} className='events-calendar__day'>
+        {days.map(day => ( <button key={day} className='events-calendar__day'>
             {day}
-        </li>
+        </button>
         ))}
 
         <ArrowButton direction='right' changeDate={nextDaysClick}/>
-    </ul>
+    </div>
   </section>)
 }
