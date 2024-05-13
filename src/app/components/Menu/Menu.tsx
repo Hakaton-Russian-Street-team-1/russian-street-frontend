@@ -7,7 +7,7 @@ export function Menu() {
   return (<nav className='menu'>
     <Link to='/' className='menu__link'>Главная</Link>
     <Link to='/' className='menu__link'>О нас</Link>
-    <Link to='/' className='menu__link'>Мероприятия</Link>
+    <Link to='/events' className='menu__link'>Мероприятия</Link>
     <Link to='/' className='menu__link'>Направления</Link>
     <Link to='/' className='menu__link'>Блог</Link>
     <Link to='/' className='menu__link'>Контакты</Link>
