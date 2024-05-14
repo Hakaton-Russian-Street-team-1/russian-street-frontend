@@ -1,0 +1,15 @@
+.slyder-container {
+    position: relative;
+    width: 1440px; /* Ширина слайдера */
+    height: 600px; /* Высота слайдера */
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.slyde-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Чтобы изображение целиком помещалось в область слайда */
+}
+
+/* Остальные стили слайдера */
