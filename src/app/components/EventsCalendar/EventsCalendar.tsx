@@ -2,6 +2,7 @@ import React from 'react';
 import './EventsCalendar.css';
 import { UseCalendar } from '../../hooks/UseCalendar';
 import { ArrowButton } from '../../../UI/ArrowButton/ArrowButton';
+import { EventsGrid } from '../EventsGrid/EventsGrid';
 
 export function EventsCalendar() {
 
@@ -15,12 +16,14 @@ export function EventsCalendar() {
 
         <ArrowButton direction='left' changeDate={prevDaysClick}/>
 
-        {days.map(day => ( <button key={day} className='events-calendar__day'>
+        {days.map(day => ( <button key={day} className={`events-calendar__day ${day === currentDate && 'events-calendar__day_current'}`} onClick={() => {setcurrentDate(day)}}>
             {day}
         </button>
         ))}
 
         <ArrowButton direction='right' changeDate={nextDaysClick}/>
     </div>
+
+    <EventsGrid />
   </section>)
 }

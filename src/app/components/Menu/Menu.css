@@ -8,3 +8,34 @@
    text-decoration: none;
    color: black;
 }
+
+.menu__link_acc-logo{
+   background-image: url(../../../images/iconamoon_profile-circle-fill.svg);
+   width: 28px;
+   height: 28px;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+@media screen and (max-width: 768px) {
+   .menu {
+       flex-direction: column;
+       align-items: center;
+   }
+
+   .menu__link{
+      text-decoration: none;
+      color: white;
+   }
+
+   .menu__link__current{
+       color: gray;
+       padding-bottom: 2px;
+       border-bottom: 2px solid rgb(0, 127, 169);
+   }
+
+   .menu__link_acc-logo{
+      background-image: url(../../../images/untitled.svg);
+   }
+
+}

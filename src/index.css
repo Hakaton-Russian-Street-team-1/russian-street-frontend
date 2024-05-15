@@ -2,10 +2,17 @@
 @import url(./vendor/fonts/fonts.css);
 
 .page{
-    font-family: 'Bahnschrift', Arial, sans-serif;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-family: 'Bahnschrift', Arial, sans-serif;
+    font-weight: 400;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
 }
 
 .content{
@@ -16,3 +23,6 @@
     margin: 0 auto 0;
 }
 
+.no-scroll{
+    overflow: hidden;
+  }

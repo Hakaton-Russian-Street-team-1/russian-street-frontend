@@ -32,12 +32,9 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(gif|png|jpg|jpeg|svg)?$/,
-        loader: 'file-loader',
-        options: {
-          name: 'assets/img/[name].[ext]',
-        },
-      },
+        test: /\.(png|jpg|jpeg|svg|gif)$/,
+        type: 'asset/resource'
+    },
     ],
   },
   plugins: [

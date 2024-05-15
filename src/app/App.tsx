@@ -4,7 +4,8 @@ import  { Header, Footer, Main, Events } from './components/Components';
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
-  return (<div className='page'>
+  return (
+  <div className='page'>
     <Header />
     <div className='content'>
 
@@ -25,7 +26,8 @@ function App() {
       
     </div>
     <Footer />
-  </div>)
+  </div>
+  )
 }
 
 export default App

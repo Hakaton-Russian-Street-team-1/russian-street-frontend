@@ -1,4 +1,5 @@
 .footer{
     height: 100px;
     outline: 1px solid gray;
+    flex-shrink: 0;
 }
