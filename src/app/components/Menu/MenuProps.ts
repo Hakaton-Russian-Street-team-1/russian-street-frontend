@@ -1,3 +1,3 @@
 export interface menuProps {
-    toggleOpenMenu: () => void;
+    toggleOpenMenu?: () => void;
 }
