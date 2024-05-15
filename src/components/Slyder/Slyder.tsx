@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './Slyder.css';
+import test from '../../assets/Skateboard.jpeg';
+import test2 from '../../assets/TaylorSwift.webp';
+import test3 from '../../assets/tabletennis.jpeg';
 
 export function Slyder() {
     const [currentSlide, setCurrentSlide] = useState(0);
-    const images = ['Skateboard.jpeg', 'tabletennis.jpeg', 'TaylorSwift.webp'];
+    const images = [test, test2, test3];
     const delay = 3000; // Задержка между слайдами в миллисекундах
 
     const nextSlide = () => {

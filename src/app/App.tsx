@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import  { Header, Footer, Main, Events } from './components/Components';
 import { Routes, Route } from 'react-router-dom';
+import { SkateboardEventPage } from '../pages/Skateboardevent/Skateboardevent';
+import { Slyder } from '../components/Slyder/Slyder';
 
 function App() {
   return (
@@ -23,7 +25,7 @@ function App() {
 
 
     </Routes>
-      
+      <Slyder />
     </div>
     <Footer />
   </div>
