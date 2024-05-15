@@ -13,7 +13,7 @@ const openClass = isOpen ? 'mobile-menu__navigation_open' : '';
 		<div className='mobile-menu'>
 		{isOpen && <div className='mobile-menu__overlay' onClick={toggleOpenMenu}></div>}
 		<div className={`mobile-menu__navigation ${openClass}`}>
-			<Menu />
+			<Menu toggleOpenMenu={toggleOpenMenu}/>
 		</div>
 	</div>
 	</>
