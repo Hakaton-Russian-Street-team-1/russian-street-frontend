@@ -1,0 +1,53 @@
+.directions__image{
+    margin: 0 0 51px;
+}
+
+.directions__frame{
+    margin: 0 0 120px;
+}
+
+.direction-card{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 60px 20px;
+    margin: 0 0 94px;
+}
+
+.direction-card__title{
+    width: 45%;
+    outline: 1px solid black;
+    height: 130px;
+    margin: 0;
+}
+
+.direction-card__subtitle{
+    width: 50%;
+    outline: 1px solid black;
+    height: 130px;
+    margin: 0;
+}
+
+.direction-card__slider{
+    width: 60%;
+    outline: 1px solid black;
+    height: 500px;
+}
+
+.direction-card__group{
+    margin: 0;
+    max-width: 38%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.direction-card__text{
+    background-color: #D2D1D0;
+    padding: 16px 32px 18px;
+    margin: 0;
+}
+
+.direction-card__animation_type_dance{
+    transform: rotate(-3deg);
+}

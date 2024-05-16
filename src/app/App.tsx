@@ -4,6 +4,7 @@ import  { Header, Footer, Main, Events } from '../components/Components';
 import { Routes, Route } from 'react-router-dom';
 import { SkateboardEventPage } from '../pages/Skateboardevent/Skateboardevent';
 import { Slyder } from '../components/Slyder/Slyder';
+import { Directions } from '../pages/Directions/Directions';
 
 function App() {
   return (
@@ -23,6 +24,10 @@ function App() {
       Component={Events}
       />
 
+      <Route 
+      path='/directions'
+      Component={Directions}
+      />
 
 
     </Routes>

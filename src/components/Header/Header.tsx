@@ -4,6 +4,7 @@ import { Menu } from '../Menu/Menu';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../../images/Logo.svg';
 import { MobileMenu } from '../MobileMenu/MobileMenu';
+import { CurrentLocation } from '../CurrentLocation/CurrentLocation';
 
 export function Header() {
 
@@ -36,8 +37,13 @@ export function Header() {
     }
   }, [screenWidth])
 
-  return (<header className='header'>
-    <img className='header__logo' src={logo}/>
-    { screenWidth > 768 ? <Menu /> : <MobileMenu isOpen={openMenu} toggleOpenMenu={toggleOpenMenu} />}
-  </header>)
+  return (<>
+    <header className='header'>
+      <img className='header__logo' src={logo}/>
+      { screenWidth > 768 ? <Menu /> : <MobileMenu isOpen={openMenu} toggleOpenMenu={toggleOpenMenu} />}
+    </header>
+    <CurrentLocation />
+  </>
+  
+)
 }
