@@ -3,20 +3,18 @@
     width: 100%;
     justify-content: space-between;
     position: relative;
-    /* width: 1440px;  */
-    /* Ширина слайдера */
-    /* height: 600px; */
-     /* Высота слайдера */
     overflow: hidden;
-    margin: 0 auto;
+    margin: 40px 0 0 0;
+    height: 600px;
+}
+
+.slider-content {
+    display: flex;
+    transition: transform 0.5s ease; /* Плавная анимация смены слайдов */
 }
 
 .slide-image {
-    width: 500px;
-    /* width: 100%; */
-    /* height: 100%; */
-    /* object-fit: cover;  */
-    /* Чтобы изображение целиком помещалось в область слайда */
+    width: 100%; /* Растягиваем изображение на всю ширину слайда */
+    height: 100%;
+    object-fit: cover; /* Чтобы изображение целиком помещалось в область слайда */
 }
-
-/* Остальные стили слайдера */
