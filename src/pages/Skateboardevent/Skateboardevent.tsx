@@ -1,7 +1,7 @@
 import React from 'react';
 import './Skateboardevent.css';
 import { Menu } from '../../components/Menu/Menu';
-import { Slyder } from '../../components/Slyder/Slyder';
+import { Slider } from '../../components/Slyder/Slider';
 
 export function SkateboardEventPage() {
     
