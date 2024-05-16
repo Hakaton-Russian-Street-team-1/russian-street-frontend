@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import { MobileMenuProps } from './MobileMenuProps';
-import BurgerButton from '../../../UI/BurgerButton/BurgerButton';
+import BurgerButton from '../../UI/BurgerButton/BurgerButton';
 import './MobileMenu.css';
 import { Menu } from '../Menu/Menu';
 

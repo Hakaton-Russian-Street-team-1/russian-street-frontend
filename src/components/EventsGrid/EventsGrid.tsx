@@ -1,6 +1,6 @@
 import React from 'react';
 import './EventsGrid.css';
-import testImage from '../../../images/TestPhoto.svg';
+import testImage from '../../images/TestPhoto.svg';
 
 export function EventsGrid() {
 
@@ -33,7 +33,7 @@ export function EventsGrid() {
       </ul>
 
       {/* Сетка событий с блоком анимации   */}
-      {/* <ul className="events-grid__list_type_animaton list-style">
+      <ul className="events-grid__list_type_animaton list-style">
 
         <li className="events-grid__ivent">
             <img src={testImage} className="events-grid__image" />
@@ -50,7 +50,7 @@ export function EventsGrid() {
             <p className="events-grid__title">Открытие скейтпарка в Кемерово</p>
             <p className="events-grid__subtitle">15 июня, г. Кемерово</p>
         </li>
-      </ul> */}
+      </ul>
 
       {/* Карточка события в виде альбома */}
       <div className="events-grid__ivent events-grid__ivent_type_album">

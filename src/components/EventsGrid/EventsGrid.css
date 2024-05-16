@@ -14,7 +14,7 @@
     background-color: #D2D1D0;
     border: none;
     padding: 16px 20px 18px;
-    background-image: url(../../../images/chevronDown.svg);
+    background-image: url(../../images/chevronDown.svg);
     background-repeat: no-repeat;
     background-position: calc(100% - 20px);
 
@@ -29,6 +29,10 @@
 .events-grid__ivent{
     position: relative;
     box-sizing: border-box;
+}
+
+.events-grid__image{
+    width: 100%;
 }
 
 .events-grid__ivent:nth-child(11n) {
@@ -53,7 +57,7 @@
 
 .events-grid__list_type_animaton{
     display: grid;
-    grid-template-columns: 1fr 592px 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
     gap: 60px 20px;
 }
 
@@ -63,6 +67,7 @@
 }
 
 .events-grid__ivent_type_album {
+    width: 266px;
     margin-top: 54px;
 }
 
@@ -75,4 +80,24 @@
     top: -20px;
     left: 10px;
     z-index: -1;
+}
+
+@media screen and (max-width:1220px) {
+    .events-grid__list_type_animaton{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(286px,1fr));
+        gap: 60px 20px;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .events-grid__list{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width:520px) {
+    .events-grid__list{
+        grid-template-columns: 1fr;
+    }
 }

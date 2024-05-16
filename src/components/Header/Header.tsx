@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Header.css';
 import { Menu } from '../Menu/Menu';
 import { Link, useLocation } from 'react-router-dom';
-import logo from '../../../images/Logo.svg';
+import logo from '../../images/Logo.svg';
 import { MobileMenu } from '../MobileMenu/MobileMenu';
 
 export function Header() {

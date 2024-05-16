@@ -26,12 +26,14 @@ export function Slyder() {
     }, [currentSlide]);
 
     return (
-        <div className="slyder-container">
-            <div className="slider-container">
-                <button className="prev-button" onClick={prevSlide}>{'<'}</button>
-                <img className="slide-image" src={images[currentSlide]} alt={`Slide ${currentSlide + 1}`} />
-                <button className="next-button" onClick={nextSlide}>{'>'}</button>
-            </div>
-        </div>
-    );
+      <div className="slider-container">
+        <button className="prev-button" onClick={prevSlide}>
+          {'<'}
+        </button>
+        <img className="slide-image" src={images[currentSlide]} alt={`Slide ${currentSlide + 1}`} />
+        <button className="next-button" onClick={nextSlide}>
+          {'>'}
+        </button>
+      </div>
+    )
 }

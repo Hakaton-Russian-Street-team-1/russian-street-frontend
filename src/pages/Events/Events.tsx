@@ -1,6 +1,6 @@
 import React from 'react';
 import './Events.css';
-import { EventsCalendar } from '../EventsCalendar/EventsCalendar';
+import { EventsCalendar } from '../../components/EventsCalendar/EventsCalendar';
 
 export function Events() {
   return (<section className='events'>

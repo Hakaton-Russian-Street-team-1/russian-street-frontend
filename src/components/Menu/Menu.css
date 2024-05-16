@@ -14,7 +14,7 @@
 }
 
 .menu__link_acc-logo{
-   background-image: url(../../../images/iconamoon_profile-circle-fill.svg);
+   background-image: url(../../images/iconamoon_profile-circle-fill.svg);
    width: 28px;
    height: 28px;
    background-repeat: no-repeat;
@@ -46,7 +46,7 @@
    }
 
    .menu__link_acc-logo{
-      background-image: url(../../../images/untitled.svg);
+      background-image: url(../../images/untitled.svg);
    }
 
 }

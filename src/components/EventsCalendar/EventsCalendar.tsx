@@ -1,7 +1,7 @@
 import React from 'react';
 import './EventsCalendar.css';
-import { UseCalendar } from '../../hooks/UseCalendar';
-import { ArrowButton } from '../../../UI/ArrowButton/ArrowButton';
+import { UseCalendar } from '../../app/hooks/UseCalendar';
+import { ArrowButton } from '../../UI/ArrowButton/ArrowButton';
 import { EventsGrid } from '../EventsGrid/EventsGrid';
 
 export function EventsCalendar() {
