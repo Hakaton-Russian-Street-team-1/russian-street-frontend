@@ -9,10 +9,15 @@ export function CurrentLocation() {
     const [ locationName, setLocationName ] = useState('');
 
     useEffect(() => {
-        console.log(location.pathname);
+        location.pathname === ('/') && setLocationName('');
+        location.pathname.includes('/about-us') && setLocationName('О нас');
+        location.pathname.includes('/events') && setLocationName('Мероприятия');
+        location.pathname.includes('/directions') && setLocationName('Направления');
+        location.pathname.includes('/blog') && setLocationName('Блог');
+        location.pathname.includes('/contacts') && setLocationName('Контакты');
     }, [location])
 
   return (<div className='current-location'>
-   <p className='current-location__text'>{`Главная /`}</p>
+   <p className='current-location__text'>{`Главная / ${locationName}`}</p>
   </div>)
 }

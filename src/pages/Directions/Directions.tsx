@@ -1,9 +1,11 @@
 import React from 'react';
 import './Directions.css';
-import dirImage from '../../images/Group16.svg';
-import frame from '../../images/Frame819.svg';
-import group18 from '../../images/Group18.svg';
-import rectangle from '../../images/Rectangle60.svg';
+import dirImage from './images/Group16.svg';
+import frame from './images/Frame819.svg';
+import group18 from './images/Group18.svg';
+import rectangle from './images/Rectangle60.svg';
+import rectangleArt from './images/rectangle_art.svg';
+import art from './images/Iskusstvo.svg';
 
 export function Directions() {
 
@@ -37,7 +39,7 @@ export function Directions() {
     </div>
     
     <div className='direction-card'>
-    <img src={rectangle} className='direction-card__animation direction-card__animation_type_dance'/>
+    <img src={rectangle} className='direction-card__animation'/>
    
       <div className='direction-card__group'>
         <h3 className='direction-card__title'>Танцы</h3>
@@ -51,12 +53,11 @@ export function Directions() {
     <h3 className='direction-card__title'>Искусство</h3>
     <p className='direction-card__subtitle'>Текст про исскуство</p>
 
+      <img src={rectangleArt} className='direction-card__animation'/>
     <div className='direction-card__group'>
-      <img src={rectangle} className='direction-card__animation'/>
+      <img src={art} className='direction-card__animation'/>
       <p className='direction-card__text'>А так же:трафареты, скульптурные инсталляции</p>
     </div>
-
-    <img className='direction-card__slider'/>
     </div>
     
   </section>)

@@ -1,0 +1,36 @@
+.about-us{
+    display: flex;
+    flex-direction: column;
+}
+
+.about-us__join{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100vw;
+    position: relative;  
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.about-us__column:nth-of-type(1){
+    padding-left: 10%;
+}
+
+.about-us__column-title{
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 130%;
+    text-transform: uppercase;
+    max-width: 367px;
+}
+
+.about-us__image{
+    width: 100%;
+}
+
+.about-us__join-button{
+    color: white;
+    background-color: #B73A34;
+    border: none;
+}
