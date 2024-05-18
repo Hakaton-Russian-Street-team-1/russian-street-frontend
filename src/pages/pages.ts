@@ -5,3 +5,4 @@ export * from './Main/Main';
 export * from './NewsCard/NewsCard';
 export * from './Blog/Blog';
 export * from './Contacts/Contacts';
+export * from './SkateboardeventPage/SkateboardEventPage';

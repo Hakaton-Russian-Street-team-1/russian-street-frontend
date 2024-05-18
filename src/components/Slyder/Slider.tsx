@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
 import './Slyder.css';
 import image1 from '../../images/cat.jpeg';
 import image2 from '../../images/taylor-swift-in-blue-wallpaper-1920x600_57.jpg';
