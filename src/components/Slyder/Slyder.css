@@ -1,10 +1,13 @@
 .slider-container {
+    width: 100vw;
     display: flex;
-    width: 100%;
     justify-content: space-between;
-    position: relative;
     overflow: hidden;
-    margin: 40px 0 0 0;
+    position: relative;
+    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0 0 120px 0;
     height: 600px;
 }
 
@@ -14,7 +17,8 @@
 }
 
 .slide-image {
-    width: 100vw; /* Растягиваем изображение на всю ширину слайда */
+    max-width: 100%; /* Растягиваем изображение на всю ширину слайда */
     height: 100%;
-    object-fit: cover; /* Чтобы изображение целиком помещалось в область слайда */
+    object-fit: cover;
+     /* Чтобы изображение целиком помещалось в область слайда */
 }

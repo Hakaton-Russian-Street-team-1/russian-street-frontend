@@ -8,7 +8,7 @@ function App() {
   return (
     <div className='page'>
       <Header />
-      <SliderIfApplicable />
+      {/* <SliderIfApplicable /> */}
       <div className='content'>
       <Routes>
           <Route path='/' element={<Main />} />

@@ -1,6 +1,7 @@
 import React from 'react';
 import './EventsGrid.css';
 import testImage from '../../images/TestPhoto.svg';
+import { Select } from '../../UI/Select/Select';
 
 export function EventsGrid() {
 
@@ -11,13 +12,9 @@ export function EventsGrid() {
       <div className="events-grid__menu">
 
         {/* Сортировка событий */}
-        <select className="events-grid__select">
-          <option >Выбрать город</option>
-        </select>
 
-        <select className="events-grid__select">
-          <option>События</option>
-        </select>
+        <Select options={['Выбрать город']}/>
+        <Select options={['События']}/>
 
       </div>
 

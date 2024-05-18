@@ -6,6 +6,7 @@ import { Slider } from '../../components/Slyder/Slider';
 export function Events() {
   return (
       <section className='events'>
+        <Slider />
         <EventsCalendar />
       </section>
     

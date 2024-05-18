@@ -33,36 +33,22 @@ export function Slider() {
 
     useEffect(() => {
         if (sliderContentRef.current) {
-            sliderContentRef.current.style.transform = `translateX(-${currentSlide * 100}vw)`;
+            sliderContentRef.current.style.transform = `translateX(-${currentSlide * 100}%)`;
         }
     }, [currentSlide]);
 
     return (
-        <div className="slider-container">
-            <div className="slider-content" ref={sliderContentRef}>
-                {images.map((image, index) => (
-                    <img
-                        key={index}
-                        className="slide-image"
-                        src={image}
-                        alt={`Slide ${index + 1}`}
-                    />
-                ))}
-            </div>
+    <div className="slider-container">
+        <div className="slider-content" ref={sliderContentRef}>
+            {images.map((image, index) => (
+                <img
+                    key={index}
+                    className="slide-image"
+                    src={image}
+                    alt={`Slide ${index + 1}`}
+                />
+            ))}
         </div>
+    </div>
     );
-}
-
-export function SliderIfApplicable() {
-    const location = useLocation();
-
-    // Проверяем, на какой странице находимся
-    const isMainOrEventsPage = location.pathname === '/events';
-
-    // Если мы находимся на главной странице или странице с мероприятиями, показываем слайдер
-    if (isMainOrEventsPage) {
-        return <Slider />;
-    }
-    // В противном случае возвращаем null, чтобы слайдер не отображался
-    return null;
 }
