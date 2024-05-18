@@ -15,6 +15,7 @@ export function CurrentLocation() {
         location.pathname.includes('/directions') && setLocationName('Направления');
         location.pathname.includes('/blog') && setLocationName('Блог');
         location.pathname.includes('/contacts') && setLocationName('Контакты');
+        location.pathname.includes('/SkateboardEventPage') && setLocationName('Соревнования по скейтбордингу');
     }, [location])
 
   return (<div className='current-location'>
