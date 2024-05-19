@@ -66,18 +66,135 @@ export function AboutUs() {
 
     <div className='partners'>
 
-      <div className='partners__general-strategic'>
-          <div className='partners__general'>
+      <div className='partners__table'>
+          <div className='partners__column'>
             <h6 className='partners__title'>Генеральные партнёры</h6>
-            <img src={partner}/>
-            <img src={partner}/>
+
+            <div className='partners__partner'>
+              <img src={partner} className='partners__partner-image'/>
+              <div className='partners__about-partner'>
+                <div className='partners__textarea'>
+                  <p className='partners__about-partner-text'>Фонд президентских грантов является единым оператором государственной поддержки некоммерческих неправительственных организаций в Российской Федерации с 3 апреля 2017 года</p>
+                  <p className='partners__about-partner-text'>Совместные проекты: скейдборд соревнования “МЫ”, конкурс паркура “ДОСКА” </p>
+                </div>
+              </div>
+            </div>
+            
+
+            <div className='partners__partner'>
+              <img src={partner} className='partners__partner-image'/>
+              <div className='partners__about-partner'>
+                <div className='partners__textarea'>
+                  <p className='partners__about-partner-text'>Фонд президентских грантов является единым оператором государственной поддержки некоммерческих неправительственных организаций в Российской Федерации с 3 апреля 2017 года</p>
+                  <p className='partners__about-partner-text'>Совместные проекты: скейдборд соревнования “МЫ”, конкурс паркура “ДОСКА” </p>
+                </div>
+              </div>
+            </div>
+
           </div>
-          <div className='partners__general'>
+
+          <div className='partners__column'>
             <h6 className='partners__title'>Стратегические партнёры</h6>
-            <img src={partner}/>
-            <img src={partner}/>
+
+            <div className='partners__partner'>
+              <img src={partner} className='partners__partner-image'/>
+              <div className='partners__about-partner'>
+                <div className='partners__textarea'>
+                  <p className='partners__about-partner-text'>Фонд президентских грантов является единым оператором государственной поддержки некоммерческих неправительственных организаций в Российской Федерации с 3 апреля 2017 года</p>
+                  <p className='partners__about-partner-text'>Совместные проекты: скейдборд соревнования “МЫ”, конкурс паркура “ДОСКА” </p>
+                </div>
+              </div>
+            </div>
+
+
+            <div className='partners__partner'>
+              <img src={partner} className='partners__partner-image'/>
+              <div className='partners__about-partner'>
+                <div className='partners__textarea'>
+                  <p className='partners__about-partner-text'>Фонд президентских грантов является единым оператором государственной поддержки некоммерческих неправительственных организаций в Российской Федерации с 3 апреля 2017 года</p>
+                  <p className='partners__about-partner-text'>Совместные проекты: скейдборд соревнования “МЫ”, конкурс паркура “ДОСКА” </p>
+                </div>
+              </div>
+            </div>
+
           </div>
       </div>
+
+      <div className='partners__table'>
+        <div className='partners__column'>
+          <h6 className='partners__title'>Организационные партнёры</h6>
+          <div className='partners__partner'>
+              <img src={partner} className='partners__partner-image'/>
+              <div className='partners__about-partner'>
+                <div className='partners__textarea'>
+                  <p className='partners__about-partner-text'>Фонд президентских грантов является единым оператором государственной поддержки некоммерческих неправительственных организаций в Российской Федерации с 3 апреля 2017 года</p>
+                  <p className='partners__about-partner-text'>Совместные проекты: скейдборд соревнования “МЫ”, конкурс паркура “ДОСКА” </p>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div className='partners__column'>
+          <h6 className='partners__title' style={{color:'white'}}>Организационные партнёры</h6>
+          <div className='partners__partner'>
+              <img src={partner} className='partners__partner-image'/>
+              <div className='partners__about-partner'>
+                <div className='partners__textarea'>
+                  <p className='partners__about-partner-text'>Фонд президентских грантов является единым оператором государственной поддержки некоммерческих неправительственных организаций в Российской Федерации с 3 апреля 2017 года</p>
+                  <p className='partners__about-partner-text'>Совместные проекты: скейдборд соревнования “МЫ”, конкурс паркура “ДОСКА” </p>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+
+      <div className='partners__table'>
+        <div className='partners__column'>
+          <h6 className='partners__title'>Региональные партнёры</h6>
+          <div className='partners__partner'>
+              <img src={partner} className='partners__partner-image'/>
+              <div className='partners__about-partner'>
+                <div className='partners__textarea'>
+                  <p className='partners__about-partner-text'>Фонд президентских грантов является единым оператором государственной поддержки некоммерческих неправительственных организаций в Российской Федерации с 3 апреля 2017 года</p>
+                  <p className='partners__about-partner-text'>Совместные проекты: скейдборд соревнования “МЫ”, конкурс паркура “ДОСКА” </p>
+                </div>
+              </div>
+            </div>
+            <div className='partners__partner'>
+              <img src={partner} className='partners__partner-image'/>
+              <div className='partners__about-partner'>
+                <div className='partners__textarea'>
+                  <p className='partners__about-partner-text'>Фонд президентских грантов является единым оператором государственной поддержки некоммерческих неправительственных организаций в Российской Федерации с 3 апреля 2017 года</p>
+                  <p className='partners__about-partner-text'>Совместные проекты: скейдборд соревнования “МЫ”, конкурс паркура “ДОСКА” </p>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div className='partners__column'>
+          <h6 className='partners__title'  style={{color:'white'}}>Региональные партнёры</h6>
+          <div className='partners__partner'>
+              <img src={partner} className='partners__partner-image'/>
+              <div className='partners__about-partner'>
+                <div className='partners__textarea'>
+                  <p className='partners__about-partner-text'>Фонд президентских грантов является единым оператором государственной поддержки некоммерческих неправительственных организаций в Российской Федерации с 3 апреля 2017 года</p>
+                  <p className='partners__about-partner-text'>Совместные проекты: скейдборд соревнования “МЫ”, конкурс паркура “ДОСКА” </p>
+                </div>
+              </div>
+            </div>
+            <div className='partners__partner'>
+              <img src={partner} className='partners__partner-image'/>
+              <div className='partners__about-partner'>
+                <div className='partners__textarea'>
+                  <p className='partners__about-partner-text'>Фонд президентских грантов является единым оператором государственной поддержки некоммерческих неправительственных организаций в Российской Федерации с 3 апреля 2017 года</p>
+                  <p className='partners__about-partner-text'>Совместные проекты: скейдборд соревнования “МЫ”, конкурс паркура “ДОСКА” </p>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+
+
 
 
     </div>
