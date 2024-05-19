@@ -7,9 +7,11 @@ import image309 from './images/image309.svg';
 import innumber from './images/innumbers.svg';
 import partner from './images/partner.svg';
 import { Select } from '../../UI/Select/Select';
+import { EventCard } from '../../components/EventCard/EventCard';
 
 export function AboutUs() {
 
+  const  test = [1,2,3,4];
 
   return (<section className='about-us'>
 
@@ -195,7 +197,11 @@ export function AboutUs() {
       </div>
 
 
+      <h3 className='about-us__title'>Новости</h3>
 
+      <div className='about-us__news-list list-style'>
+      {test.map(card => <EventCard id = {card} key={card}/>)}
+      </div>
 
     </div>
     

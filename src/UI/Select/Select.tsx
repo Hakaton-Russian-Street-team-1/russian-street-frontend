@@ -7,7 +7,7 @@ export function Select({ options, whiteTheme }: SelectProps) {
 
   return (
     <select className={`select ${whiteTheme && 'select_type_white'}`}>
-        { options.map(option => <option >{option}</option>) }
+        { options.map((option, index) => <option key={index}>{option}</option>) }
     </select>
   )
 }

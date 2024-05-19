@@ -2,6 +2,7 @@ import React from 'react';
 import './EventsGrid.css';
 import testImage from '../../images/TestPhoto.svg';
 import { Select } from '../../UI/Select/Select';
+import { EventCard } from '../EventCard/EventCard';
 
 export function EventsGrid() {
 
@@ -21,11 +22,7 @@ export function EventsGrid() {
       {/* Основная сетка с событиями */}
       <ul className="events-grid__list list-style">
         {test.map(ivent => (
-          <li key={ivent} className="events-grid__ivent">
-            <img src={testImage} className="events-grid__image" />
-            <p className="events-grid__title">Открытие скейтпарка в Кемерово</p>
-            <p className="events-grid__subtitle">15 июня, г. Кемерово</p>
-          </li>
+          <EventCard id={ivent}/>
         ))}
       </ul>
 
