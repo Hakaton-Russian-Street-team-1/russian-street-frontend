@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom'; // Импортируем useParams
 import { Slider } from '../../components/Slyder/Slider';
-import './SkateboardEventPage.css';
+import './Event.css';
 import img from '../../images/cat.jpeg';
 import { EventCard } from '../../components/EventCard/EventCard';
 
-export function SkateboardEventPage() {
+export function Event() {
+  
   let { id } = useParams(); // Получаем значение параметра id из URL
 
   useEffect(() => {

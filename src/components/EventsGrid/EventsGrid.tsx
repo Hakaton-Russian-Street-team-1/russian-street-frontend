@@ -4,7 +4,7 @@ import testImage from '../../images/TestPhoto.svg';
 import { Select } from '../../UI/Select/Select';
 import { EventCard } from '../EventCard/EventCard';
 import { CheckBox } from '../../UI/CheckBox/CheckBox';
-import { getEvents } from '../../utils/EventsApi/EventsApi';
+import { createEvent, getEvents } from '../../utils/EventsApi/EventsApi';
 
 export function EventsGrid() {
 
@@ -12,6 +12,10 @@ export function EventsGrid() {
 
   useMemo(async () => {
     // let res = await getEvents();
+
+    // let res = await createEvent();
+
+    // console.log(res);
   }, [])
 
   return (
@@ -28,10 +32,33 @@ export function EventsGrid() {
       <div className="events-grid__flex-container">
 
         <fieldset className="events-grid__sorting">
+            <fieldset className="events-grid__sorting-item">
             <CheckBox id='platforms'>Площадки</CheckBox>
             <CheckBox id='platforms'>Уличные локации</CheckBox>
             <CheckBox id='platforms'>Крытые локации</CheckBox>
+            </fieldset>
+
+            <fieldset className="events-grid__sorting-item">
+            <CheckBox id='platforms'>Мероприятия</CheckBox>
+            <CheckBox id='platforms'>Соревнования</CheckBox>
+            <CheckBox id='platforms'>Тренировки</CheckBox>
+            <CheckBox id='platforms'>Мастер классы</CheckBox>
+            </fieldset>
+
+            <fieldset className="events-grid__sorting-item">
+            <CheckBox id='platforms'>Площадки</CheckBox>
+            <CheckBox id='platforms'>Уличные локации</CheckBox>
+            <CheckBox id='platforms'>Крытые локации</CheckBox>
+            </fieldset>
+
+            <fieldset className="events-grid__sorting-item">
+            <CheckBox id='platforms'>Площадки</CheckBox>
+            <CheckBox id='platforms'>Уличные локации</CheckBox>
+            <CheckBox id='platforms'>Крытые локации</CheckBox>
+            </fieldset>
+
         </fieldset>
+        
 
               {/* Основная сетка с событиями */}
         <ul className="events-grid__list list-style">

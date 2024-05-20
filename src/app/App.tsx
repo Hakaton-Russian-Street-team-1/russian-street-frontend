@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { Header, Footer } from '../components/Components';
-import { AboutUs, Contacts, Directions, Events, Blog, Main, SkateboardEventPage } from '../pages/pages';
+import { AboutUs, Contacts, Directions, Events, Blog, Main, Event } from '../pages/pages';
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
           <Route path='/about-us' element={<AboutUs />} />
           <Route path='/blog' element={<Blog />} />
           <Route path='/contacts' element={<Contacts />} />
-          <Route path='/SkateboardEventPage' element={<SkateboardEventPage />} />
+          <Route path='/events/:id' element={<Event />} />
       </Routes>
       </div>
       <Footer />

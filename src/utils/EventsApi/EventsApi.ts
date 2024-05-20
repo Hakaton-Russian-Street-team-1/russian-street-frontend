@@ -29,6 +29,6 @@ export async function createEvent () {
         })
         }
     )
-
-    return res;
+    let data = res.json();
+    return data;
 }

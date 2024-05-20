@@ -13,6 +13,7 @@ export function CheckBox({ id, children }: CheckBoxProps) {
           type="checkbox"
           className="checkbox"
         />
+        <span className="checkbox__pseudo-item"></span>
       </label>
     );
 }
