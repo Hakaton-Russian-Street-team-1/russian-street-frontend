@@ -19,3 +19,8 @@
 .event-card__subtitle{
     margin: 16px 0 0 0;
 }
+
+.link{
+    text-decoration: none;
+    color: #000;
+}
