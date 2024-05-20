@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom'; // Импортируем useParams
+import { useParams } from 'react-router-dom';
 import { Slider } from '../../components/Slyder/Slider';
+import { PopupParty } from '../../components/PopupForParty/PopupforParty';
 import './Event.css';
 import img from '../../images/cat.jpeg';
 import { EventCard } from '../../components/EventCard/EventCard';
 
 export function Event() {
-  
-  let { id } = useParams(); // Получаем значение параметра id из URL
+  let { id } = useParams();
 
   useEffect(() => {
     const descriptionElements = document.querySelectorAll('.template__text .template__description');
@@ -27,29 +27,20 @@ export function Event() {
 
       <section className="template">
         <div className="template__text">
-          <p className="template__title"> Описание </p>
+          <p className="template__title">Описание</p>
           <p className="template__description">
-            {' '}
-            - Экстремальные состязания пройдут в обычном зачете для всех, а также выделена отдельно детская
-            номинация;
+            - Экстремальные состязания пройдут в обычном зачете для всех, а также выделена отдельно детская номинация;
           </p>
           <p className="template__description">
-            - Мастер-классы и показательные выступления от сборной России по скейтборду, Центра экстремального
-            спорта «Спортэкс» г. Красноярск;
+            - Мастер-классы и показательные выступления от сборной России по скейтборду, Центра экстремального спорта «Спортэкс» г. Красноярск;
           </p>
-          <p className="template__description"> - Крутые призы и подарки от партнеров. </p>
-          <p className="template__time">И так, встречаемся:  </p>
-          <p className="template__time"> 4 ноября 2023 года;  </p>
-          <p className="template__time"> 12:00 часов;  </p>
-          <p className="template__time"> Скейт-парк «Дом на колесах», (ул. Тухачевского 48Б).</p>
-          <p className="template__org">
-            {' '}
-            Организаторы: Федерация скейтбординга Кузбасса и скейт-парк «Дом на колесах».
-          </p>
-          <p className="template__meet">
-            {' '}
-            С собой берем свое транспортное средство, заряд энергии и хорошее настроение
-          </p>
+          <p className="template__description">- Крутые призы и подарки от партнеров.</p>
+          <p className="template__time">И так, встречаемся:</p>
+          <p className="template__time">4 ноября 2023 года;</p>
+          <p className="template__time">12:00 часов;</p>
+          <p className="template__time">Скейт-парк «Дом на колесах», (ул. Тухачевского 48Б).</p>
+          <p className="template__org">Организаторы: Федерация скейтбординга Кузбасса и скейт-парк «Дом на колесах».</p>
+          <p className="template__meet">С собой берем свое транспортное средство, заряд энергии и хорошее настроение</p>
           <div className="template__question">
             <span>Задать вопрос организаторам:</span>
             <span className="icon-container">
@@ -61,7 +52,7 @@ export function Event() {
         <div className="template__card">
           <img src={img} className="template__image" alt="Description of the image" />
           <p className="template__card-subtitle">Представитель Региона</p>
-          <p className="template__card-description">Алена Васильева </p>
+          <p className="template__card-description">Алена Васильева</p>
           <p className="template__card-description">mail: alyona@mail.ru</p>
           <p className="template__card-description">8-923-567-789</p>
           <p className="template__card-office">Офис: 16мкр, д.50, оф 216 пн-пт с 09.00-18.00</p>
@@ -69,7 +60,7 @@ export function Event() {
       </section>
 
       <section className="buttons">
-        <button className="button__red">Участовать</button>
+        <PopupParty triggerButton={<button className="button__red">Участвовать</button>} />
         <button className="button__white">Стать спонсором</button>
       </section>
 
