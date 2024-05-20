@@ -32,6 +32,17 @@
     gap: 60px 20px;
 }
 
+.events-grid__flex-container{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.events-grid__sorting{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .events-grid__ivent_type_animation{
     height: 390px;
     border: 1px solid gray;
