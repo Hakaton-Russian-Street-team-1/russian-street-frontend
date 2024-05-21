@@ -4,7 +4,7 @@ import { Slider } from '../../components/Slyder/Slider';
 import { PopupParty } from '../../components/PopupForParty/PopupforParty';
 import { PopupforSponsor } from '../../components/PopupForSponsor/PopupforSponsor'; // Импортируем правильный компонент
 import './Event.css';
-import img from '../../images/cat.jpeg';
+import img from '../../images/woman.png';
 import { EventCard } from '../../components/EventCard/EventCard';
 
 export function Event() {
@@ -20,8 +20,9 @@ export function Event() {
 
   return (
     <>
-      <Slider />
+      
       <section className="skate-event">
+        
         <div className="skate-event__text-block skate-event__text-block--gray">{generateGrayText(20)}</div>
         <div className="skate-event__text-block skate-event__text-block--black">{generateBlackText(10)}</div>
       </section>
@@ -44,10 +45,14 @@ export function Event() {
           <p className="template__meet">С собой берем свое транспортное средство, заряд энергии и хорошее настроение</p>
           <div className="template__question">
             <span>Задать вопрос организаторам:</span>
-            <span className="icon-container">
-              <div className="gray-circle"></div>
-              <div className="gray-circle"></div>
-            </span>
+            <div className="icon-container">
+  <a href="#" target="_blank">
+    <div className="telgram-circle"></div>
+  </a>
+  <a href="#" target="_blank">
+    <div className="whats-circle"></div>
+  </a>
+</div>
           </div>
         </div>
         <div className="template__card">
@@ -65,13 +70,18 @@ export function Event() {
         <PopupParty triggerButton={<button className="button__red">Участвовать</button>} />
       </section>
 
-      <section className="map_event">
-        <iframe
-          src="https://yandex.ru/map-widget/v1/?um=constructor%3Aba31cfe28fe4a1d9077cb197a0dabea6ad54e5cc9ea6b9c9484e23d10e21346c&amp;source=constructor"
-          width="1400"
-          height="500"
-          frameBorder="0"></iframe>
-      </section>
+      <section className='map_event'>
+  <iframe
+    src="https://yandex.ru/map-widget/v1/?um=constructor%3Aba31cfe28fe4a1d9077cb197a0dabea6ad54e5cc9ea6b9c9484e23d10e21346c&amp;source=constructor"
+    width="100%"
+    height="500"
+    frameBorder="0"
+    style={{ border: 0 }} // добавляем стиль без рамки, чтобы убрать рамку вокруг iframe
+    allowFullScreen // если хотите разрешить полноэкранный режим
+    aria-hidden="false"
+    tabIndex={0}></iframe>
+</section>
+
 
       <section className='likeit'>
         <h3 className='likeit__title'>Вам понравится</h3>

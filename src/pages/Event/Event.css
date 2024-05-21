@@ -81,7 +81,7 @@
 
 .template__image {
   width: 286px;
-  height: 173px;
+  height: 289px;
   object-fit: cover;
 }
 
@@ -173,13 +173,20 @@ line-height: 130%; /* 26px */
   display: flex;
 }
 
-.gray-circle {
+.telgram-circle {
   width: 30px;
   height: 30px;
-  background-color: #d9d9d9; /* Серый цвет кружка */
-  border-radius: 50%; /* Сделаем круглую форму */
-  margin-right: 10px; /* Добавим отступ между кружками */
+  background: url(../../images/telegram.png) no-repeat center/cover;
+  cursor: pointer;
 }
+
+.whats-circle{
+  width: 30px;
+  height: 30px;
+  background: url(../../images/whatsapp.png) no-repeat center/cover;
+  cursor: pointer;
+}
+
 
 .template__card-subtitle {
   margin: 0;
@@ -234,8 +241,8 @@ line-height: 130%; /* 26px */
 }
 
 .button__white {
-    color: black;
-    background-color: white;
+    color: rgb(254, 252, 252);
+    background-color: #222;
     border: 2px solid #B73A34; /* Задаем толщину и стиль границы */
     padding: 15px 22px;
     font-size: 20px;
