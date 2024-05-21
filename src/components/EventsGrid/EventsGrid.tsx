@@ -123,16 +123,6 @@ export function EventsGrid() {
         </li>
       </ul>
 
-      {/* Карточка события в виде альбома */}
-      <div className="events-grid__ivent events-grid__ivent_type_album">
-            <img src={testImage} className="events-grid__image" />
-            {/* Тут будет фоновая фотография а пока просто чёрный div */}
-            <div className="events-grid__background-image"/>
-            <p className="events-grid__title">Открытие скейтпарка в Кемерово</p>
-            <p className="events-grid__subtitle">15 июня, г. Кемерово</p>
-      </div>
-
-
     </section>
   )
 }
