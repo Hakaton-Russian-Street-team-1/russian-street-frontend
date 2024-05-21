@@ -1,0 +1,15 @@
+.button {
+    display: flex;
+    padding: 16px 32px 18px;
+    justify-content: center;
+    align-items: center;
+    background-color: #B73A34;
+    border: none;
+    color: var(--white, #FFF);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
+    text-transform: uppercase;
+    max-width: 197px;
+}

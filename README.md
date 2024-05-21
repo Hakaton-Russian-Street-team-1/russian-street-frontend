@@ -34,6 +34,14 @@
 
 Или
 
+
+### ЧТОбЫ СДЕЛАТЬ БИЛД НА СЕРВЕРЕ
+
+1. Клонируйте репозиторий: `git clone git@github.com:hackathon-Vink-Team-3/chat-bot-frontend.git`
+2. Перейдите в директорию проекта: `cd chat-bot-frontend`
+4. Сделайте билд: `npm run build`
+5. Скопируйте ссылку на билд пропишите путь к билду в конфиге nginx
+
 1. Переходим по этой ссылке: `https://github.com/hackathon-Vink-Team-3/chat-bot-frontend.git`
 2. Нажимаем `Code`
 3. Нажимаем `Download ZIP`

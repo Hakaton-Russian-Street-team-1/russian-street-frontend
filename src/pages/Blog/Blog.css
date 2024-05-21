@@ -3,9 +3,7 @@
 }
 
 .blog__sity {
-    color: #000;
     margin-top: 100px;
-    font-family: Bahnschrift;
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
@@ -13,9 +11,7 @@
 }
 
 .blog__title {
-    color: #000;
     margin-top: 20px;
-    font-family: Bahnschrift;
     font-size: 32px;
     font-style: normal;
     font-weight: 400;
@@ -26,7 +22,6 @@
 }
 
 .blog__date {
-    color: var(--dark-grey, #222);
     margin-top: 20px;
     font-family: Bahnschrift;
     font-size: 20px;
@@ -63,7 +58,6 @@
 
 .blog__card1-title {
     margin-top: 20px;
-    color: #000;
     font-family: Bahnschrift;
     font-size: 20px;
     font-style: normal;
@@ -79,7 +73,6 @@
 
 .blog__card1-subtitle {
     margin: 0;
-    color: black;
     font-family: Bahnschrift;
     font-size: 13px;
     font-style: normal;

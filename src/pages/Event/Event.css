@@ -4,11 +4,12 @@
   flex-direction: column; /* Изменим направление flex контейнера на вертикальное */
   justify-content: center;
   align-items: center;
-  width: 100vw; /* 100% ширины вьюпорта */
+  width: calc(100vw - 25px); /* 100% ширины вьюпорта */
   position: relative; /*включаем left */
   left: 50%; /* устанавливаем левый край non-container в центр container'a */
   transform: translateX(-50%); /* двигаем non-container влево на 50% его ширины */
   margin-bottom: 168px;
+  min-height: 253px;
 }
 
 .skate-event__text-block {
@@ -23,15 +24,17 @@
 }
 
 .skate-event__text-block--gray {
-  background-color: #d9d9d9;
-  color: black;
+  background-color: #B73A34;
+  color: white;
   overflow: hidden; /* Скрыть содержимое, которое выходит за пределы блока */
   z-index: 2; /* Установить более высокий уровень */
   top: 60px; /* Сдвинуть блок вниз на 20 пикселей */
 }
 
 .skate-event__text-block--black {
-  background-color: black;
+  background-color: transparent;
+  border-top: 3px dashed white;
+  border-bottom: 3px dashed white;
   color: white;
   transform: rotate(7deg); /* Поворот на 7 градусов */
   z-index: 1; /* Установить более низкий уровень */
@@ -66,7 +69,6 @@
 .template__title {
   padding: 0;
   max-width: 699px;
-  color: #000;
   font-family: Benzin-Medium;
   font-size: 60px;
   font-style: normal;
@@ -91,7 +93,7 @@
 .template__description {
   margin: 0;
   max-width: 898px; /* Ограничение ширины текста */
-  color: #000;
+
 
 /* body medium */
 font-family: Bahnschrift;
@@ -103,7 +105,7 @@ line-height: 130%; /* 26px */
 
 .template__time {
   margin: 0;
-  color: #000;
+
 
 /* body medium */
 font-family: Bahnschrift;
@@ -116,7 +118,7 @@ line-height: 130%; /* 26px */
 .template__org {
   margin: 0;
   margin-top: 40px;
-  color: #000;
+
 
 /* body medium */
 font-family: Bahnschrift;
@@ -129,7 +131,7 @@ line-height: 130%; /* 26px */
 .template__meet {
   margin: 0;
   margin-top: 40px;
-  color: #000;
+
 
 /* body medium */
 font-family: Bahnschrift;
@@ -141,7 +143,7 @@ line-height: 130%; /* 26px */
 
 .last-description {
   margin-bottom: 40px;
-  color: #000;
+
   font-weight: 600;
 
 /* body medium */
@@ -156,7 +158,7 @@ line-height: 130%; /* 26px */
   align-items: center;
   margin: 0;
   margin-top: 153px;
-  color: #000;
+
 
 /* body medium */
 font-family: Bahnschrift;
@@ -183,7 +185,7 @@ line-height: 130%; /* 26px */
   margin: 0;
   margin-top: 16px;
   margin-bottom: 5px;
-  color: #000;
+
 
   /* accent medium */
   font-family: Bahnschrift;
@@ -194,7 +196,7 @@ line-height: 130%; /* 26px */
 }
 
 .template__card-description {
-  color: #000;
+
   font-family: Bahnschrift;
   font-size: 20px;
   font-style: normal;
@@ -206,7 +208,7 @@ line-height: 130%; /* 26px */
 
 .template__card-office {
   margin: 0;
-  color: #000;
+
   font-family: Bahnschrift;
   font-size: 13px;
   font-style: normal;
