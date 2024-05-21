@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Slider } from '../../components/Slyder/Slider';
 import { PopupParty } from '../../components/PopupForParty/PopupforParty';
+import { PopupforSponsor } from '../../components/PopupForSponsor/PopupforSponsor'; // Импортируем правильный компонент
 import './Event.css';
 import img from '../../images/cat.jpeg';
 import { EventCard } from '../../components/EventCard/EventCard';
@@ -60,14 +61,14 @@ export function Event() {
       </section>
 
       <section className="buttons">
+        <PopupforSponsor triggerButton={<button className="button__white">Стать спонсором</button>} /> {/* Вставляем компонент с попапом */}
         <PopupParty triggerButton={<button className="button__red">Участвовать</button>} />
-        <button className="button__white">Стать спонсором</button>
       </section>
 
-      <section className="map">
+      <section className="map_event">
         <iframe
           src="https://yandex.ru/map-widget/v1/?um=constructor%3Aba31cfe28fe4a1d9077cb197a0dabea6ad54e5cc9ea6b9c9484e23d10e21346c&amp;source=constructor"
-          width="1204"
+          width="1400"
           height="500"
           frameBorder="0"></iframe>
       </section>
