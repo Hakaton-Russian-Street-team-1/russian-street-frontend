@@ -28,3 +28,21 @@ jobs:
           file: Dockerfile
           push: true
           tags: dnevskiy/streets_frontend:latest
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs:
+      - build_frontend_and_push_to_docker_hub
+    steps:
+      - name: exec remote ssh commands to deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          passphrase: ${{ secrets.SSH_PASSPHRASE }}
+          script: |
+            sudo docker-compose pull frontend
+            sudo docker compose down
+            sudo docker volume rm dnevskiy_static_front
+            sudo docker-compose up -d
