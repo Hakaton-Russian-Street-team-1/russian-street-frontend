@@ -1,15 +1,15 @@
 .skate-event {
-  height: auto; /* Изменим высоту на автоматическую, чтобы она соответствовала содержимому */
-  display: flex;
-  flex-direction: column; /* Изменим направление flex контейнера на вертикальное */
-  justify-content: center;
-  align-items: center;
-  width: calc(100vw - 25px); /* 100% ширины вьюпорта */
-  position: relative; /*включаем left */
-  left: 50%; /* устанавливаем левый край non-container в центр container'a */
-  transform: translateX(-50%); /* двигаем non-container влево на 50% его ширины */
-  margin-bottom: 168px;
-  min-height: 253px;
+  height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(100vw - 25px);
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 63px;
+    min-height: 253px;
 }
 
 .skate-event__text-block {
@@ -173,7 +173,7 @@ line-height: 130%; /* 26px */
   display: flex;
 }
 
-.telgram-circle {
+.telegram-circle {
   width: 30px;
   height: 30px;
   background: url(../../images/telegram.png) no-repeat center/cover;

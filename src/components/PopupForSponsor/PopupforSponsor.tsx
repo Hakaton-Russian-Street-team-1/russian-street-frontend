@@ -3,27 +3,25 @@ import './PopupforSponsor.css';
 import ClosePopupBtn from '../../images/closepopupbtn.svg';
 
 interface PopupforSponsorProps {
-  triggerButton: React.ReactNode;
+  isOpen: boolean;
+  closePopup: () => void;
 }
 
-export function PopupforSponsor({ triggerButton }: PopupforSponsorProps) {
-  const [isOpen, setIsOpen] = useState(false);
+export function PopupforSponsor({ isOpen, closePopup }: PopupforSponsorProps) {
   const [amount, setAmount] = useState<string>('');
   const popupRef = useRef<HTMLDivElement>(null);
-
-  const handleSponsorPopupClose = () => setIsOpen(false);
 
   const handleAmountButtonClick = (value: string) => setAmount(value);
 
   const handleKeyDown = (event: KeyboardEvent) => {
     if (event.key === 'Escape') {
-      setIsOpen(false);
+      closePopup();
     }
   };
 
   const handleClickOutside = (event: MouseEvent) => {
     if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
-      setIsOpen(false);
+      closePopup();
     }
   };
 
@@ -42,42 +40,39 @@ export function PopupforSponsor({ triggerButton }: PopupforSponsorProps) {
   }, [isOpen]);
 
   return (
-    <>
-      {React.cloneElement(triggerButton as React.ReactElement<any>, { onClick: () => setIsOpen(true) })}
-      <div className={`sponsor-popup ${isOpen ? 'popup-open' : ''}`}>
-        <div className="sponsor-popup-content" ref={popupRef}>
-          <div className="popup-container">
-            <img src={ClosePopupBtn} className="close-button" onClick={handleSponsorPopupClose} alt="Закрыть" />
-            <div className="sponsor-amounts">
-              <button className="sponsor-amount" onClick={() => handleAmountButtonClick('500₽')}>500₽</button>
-              <button className="sponsor-amount" onClick={() => handleAmountButtonClick('1000₽')}>1000₽</button>
-              <button className="sponsor-amount" onClick={() => handleAmountButtonClick('2000₽')}>2000₽</button>
-              <button className="sponsor-amount other-amount" onClick={() => handleAmountButtonClick('')}>Другая сумма</button>
+    <div className={`sponsor-popup ${isOpen ? 'popup-open' : ''}`}>
+      <div className="sponsor-popup-content" ref={popupRef}>
+        <div className="popup-container">
+          <img src={ClosePopupBtn} className="close-button" onClick={closePopup} alt="Закрыть" />
+          <div className="sponsor-amounts">
+            <button className="sponsor-amount" onClick={() => handleAmountButtonClick('500₽')}>500₽</button>
+            <button className="sponsor-amount" onClick={() => handleAmountButtonClick('1000₽')}>1000₽</button>
+            <button className="sponsor-amount" onClick={() => handleAmountButtonClick('2000₽')}>2000₽</button>
+            <button className="sponsor-amount other-amount" onClick={() => handleAmountButtonClick('')}>Другая сумма</button>
+          </div>
+          <input
+            type="text"
+            className="sponsor-input"
+            placeholder="200₽"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+          />
+          <div className="sponsor-payment-methods">
+            <div className="sponsor-method">
+              <div className="sponsor-method-telegram">TELEGRAM</div>
+              <a href="#" className="sponsor-method-link">Перейти</a>
             </div>
-            <input
-              type="text"
-              className="sponsor-input"
-              placeholder="200₽"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-            />
-            <div className="sponsor-payment-methods">
-              <div className="sponsor-method">
-                <div className="sponsor-method-telegram">TELEGRAM</div>
-                <a href="#" className="sponsor-method-link">Перейти</a>
-              </div>
-              <div className="sponsor-method">
-                <div className="sponsor-method-boosty">BOOSTY</div>
-                <a href="#" className="sponsor-method-link">Перейти</a>
-              </div>
-              <div className="sponsor-method">
-                <div className="sponsor-method-paypal">PAYPAL</div>
-                <a href="#" className="sponsor-method-link">Перейти</a>
-              </div>
+            <div className="sponsor-method">
+              <div className="sponsor-method-boosty">BOOSTY</div>
+              <a href="#" className="sponsor-method-link">Перейти</a>
+            </div>
+            <div className="sponsor-method">
+              <div className="sponsor-method-paypal">PAYPAL</div>
+              <a href="#" className="sponsor-method-link">Перейти</a>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

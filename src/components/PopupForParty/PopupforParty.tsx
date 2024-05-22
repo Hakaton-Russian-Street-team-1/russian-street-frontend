@@ -1,15 +1,15 @@
-import React, { useState, ReactElement, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './PopupforParty.css';
 import img from '../../images/Rectangle21.png';
-import ClosePopupBtn from '../../images/closepopupbtn.svg'; // Подключаем изображение
-import { Link, useNavigate } from 'react-router-dom'; // Импортируем Link и useNavigate из react-router-dom
+import ClosePopupBtn from '../../images/closepopupbtn.svg';
+import { Link, useNavigate } from 'react-router-dom';
 
 interface PopupPartyProps {
-  triggerButton: ReactElement;
+  isOpen: boolean;
+  closePopup: () => void;
 }
 
-export function PopupParty({ triggerButton }: PopupPartyProps) {
-  const [isOpen, setIsOpen] = useState(false);
+export function PopupParty({ isOpen, closePopup }: PopupPartyProps) {
   const [name, setName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [nameError, setNameError] = useState(false);
@@ -18,11 +18,7 @@ export function PopupParty({ triggerButton }: PopupPartyProps) {
   const [registrationSuccess, setRegistrationSuccess] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-  const navigate = useNavigate(); // Используем useNavigate для навигации
-
-  const togglePopup = () => {
-    setIsOpen(!isOpen);
-  };
+  const navigate = useNavigate();
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
@@ -73,16 +69,16 @@ export function PopupParty({ triggerButton }: PopupPartyProps) {
 
   const handleKeyDown = useCallback((event: KeyboardEvent) => {
     if (event.key === 'Escape') {
-      setIsOpen(false);
+      closePopup();
     }
     if (event.key === 'Enter') {
       if (showSuccessMessage) {
-        navigate('/'); // Переход на главную страницу
+        navigate('/');
       } else if (isFormValid) {
         handleSubmit(event as unknown as React.FormEvent<HTMLFormElement>);
       }
     }
-  }, [isFormValid, showSuccessMessage, navigate]);
+  }, [isFormValid, showSuccessMessage, navigate, closePopup]);
 
   useEffect(() => {
     if (isOpen) {
@@ -97,57 +93,54 @@ export function PopupParty({ triggerButton }: PopupPartyProps) {
   }, [isOpen, handleKeyDown]);
 
   return (
-    <div>
-      {React.cloneElement(triggerButton, { onClick: togglePopup })}
-      <div className={`popup-overlay ${isOpen ? 'active' : ''}`} onClick={togglePopup}>
-        <div className="popup" onClick={(e) => e.stopPropagation()}>
-          <img src={ClosePopupBtn} className="popup__close-btn" alt="Close" onClick={togglePopup} />
-          <div className="popup__content">
-            <div className="popup__image-wrapper">
-              <img src={img} alt="Event" className="popup__image" />
-            </div>
-            {showSuccessMessage ? (
-              <div className="success-message-block">
-                <p className="success-message">Регистрация прошла успешно!</p>
-                <Link to="/" className="home-button">На главную</Link>
-              </div>
-            ) : (
-              <div className="popup__form-wrapper">
-                <p>Представьтесь, пожалуйста</p>
-                <form className="popup__form" onSubmit={handleSubmit}>
-                  <label>
-                    <input
-                      type="text"
-                      placeholder="Иванов Иван Иванович"
-                      value={name}
-                      onChange={handleNameChange}
-                      required
-                      className={nameError ? 'input-error' : ''}
-                    />
-                    <small className={nameError ? 'error-message' : ''}>
-                      {nameError ? 'Допущена ошибка в ФИО' : 'Только на кириллице'}
-                    </small>
-                  </label>
-                  <label>
-                    <p>Номер телефона</p>
-                    <input
-                      type="tel"
-                      placeholder="+7 923 567-89-90"
-                      value={phoneNumber}
-                      onChange={handlePhoneNumberChange}
-                      onFocus={handlePhoneNumberFocus}
-                      required
-                      className={phoneNumberError ? 'input-error' : ''}
-                    />
-                    <small className={phoneNumberError ? 'error-message' : ''}>
-                      {phoneNumberError ? 'Неправильный формат номера' : 'Только номера РФ'}
-                    </small>
-                  </label>
-                  <button type="submit" className="popup__submit-btn" disabled={!isFormValid}>Участвовать</button>
-                </form>
-              </div>
-            )}
+    <div className={`popup-overlay ${isOpen ? 'active' : ''}`} onClick={closePopup}>
+      <div className="popup" onClick={(e) => e.stopPropagation()}>
+        <img src={ClosePopupBtn} className="popup__close-btn" alt="Close" onClick={closePopup} />
+        <div className="popup__content">
+          <div className="popup__image-wrapper">
+            <img src={img} alt="Event" className="popup__image" />
           </div>
+          {showSuccessMessage ? (
+            <div className="success-message-block">
+              <p className="success-message">Регистрация прошла успешно!</p>
+              <Link to="/" className="home-button">На главную</Link>
+            </div>
+          ) : (
+            <div className="popup__form-wrapper">
+              <p>Представьтесь, пожалуйста</p>
+              <form className="popup__form" onSubmit={handleSubmit}>
+                <label>
+                  <input
+                    type="text"
+                    placeholder="Иванов Иван Иванович"
+                    value={name}
+                    onChange={handleNameChange}
+                    required
+                    className={nameError ? 'input-error' : ''}
+                  />
+                  <small className={nameError ? 'error-message' : ''}>
+                    {nameError ? 'Допущена ошибка в ФИО' : 'Только на кириллице'}
+                  </small>
+                </label>
+                <label>
+                  <p>Номер телефона</p>
+                  <input
+                    type="tel"
+                    placeholder="+7 923 567-89-90"
+                    value={phoneNumber}
+                    onChange={handlePhoneNumberChange}
+                    onFocus={handlePhoneNumberFocus}
+                    required
+                    className={phoneNumberError ? 'input-error' : ''}
+                  />
+                  <small className={phoneNumberError ? 'error-message' : ''}>
+                    {phoneNumberError ? 'Неправильный формат номера' : 'Только номера РФ'}
+                  </small>
+                </label>
+                <button type="submit" className="popup__submit-btn" disabled={!isFormValid}>Участвовать</button>
+              </form>
+            </div>
+          )}
         </div>
       </div>
     </div>
