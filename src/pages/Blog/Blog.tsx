@@ -3,7 +3,7 @@ import './Blog.css';
 import Blogmain from '../../images/Blogmain.png';
 import Blogman from '../../images/BlogMan.png';
 import BlogSkatebig from '../../images/BlogSkatebig.png';
-import Blogskatesmall from '../../images/BlogSkatesmall.png';
+import Blogskatesmall from '../../images/Blogskatesmall.png';
 import blogskatemedium from '../../images/skatemedium.png';
 
 
