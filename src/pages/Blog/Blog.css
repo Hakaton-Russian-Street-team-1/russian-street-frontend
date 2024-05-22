@@ -43,9 +43,9 @@
   .blog__card {
     display: flex;
     justify-content: space-between;
-    gap: 20px; /* Добавляем промежуток между карточками */
     margin-top: 40px;
-    width: 100%;
+    width: calc(100% + 20px); /* Учитываем отступы между карточками */
+    margin-left: -10px; /* Отрицательный отступ для выравнивания */
   }
   
   .blog__card-item {
@@ -53,6 +53,7 @@
     flex-direction: column;
     align-items: flex-start;
     flex: 1;
+    margin: 0 10px; /* Отступ между карточками */
   }
   
   .blog__card1 {
@@ -61,11 +62,11 @@
   }
   
   .blog__card1--large {
-    flex: 2; /* Устанавливаем гибкость для больших карточек */
+    max-width: 592px;
   }
   
   .blog__card1--small {
-    flex: 1; /* Устанавливаем гибкость для маленьких карточек */
+    max-width: 286px;
   }
   
   .blog__image-content {
@@ -105,11 +106,11 @@
   }
   
   .blog__card2--large {
-    flex: 2; /* Устанавливаем гибкость для больших карточек второго ряда */
+    max-width: 388px;
   }
   
   .blog__card2--medium {
-    flex: 1; /* Устанавливаем гибкость для средних карточек второго ряда */
+    max-width: 388px;
   }
   
   .blog__image-content {
@@ -146,3 +147,36 @@
     text-align: left;
   }
   
+  .blog__no-news-container {
+    text-align: center;
+    color: var(--white, #FFF);
+  }
+  
+  .blog__no-news {
+    width: 1070px;
+    height: 156px;
+    font-family: Benzin-Medium;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%; /* 78px */
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto; /* Центрирует блок на странице */
+  }
+  
+  .blog__no-news-subtitle {
+    font-family: Bahnschrift;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%; /* 26px */
+    margin-top: 40px;
+  }
+  
+  .blog__no-news-link{
+    color: #FFF;
+    text-decoration: none;
+  }
