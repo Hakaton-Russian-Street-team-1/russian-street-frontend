@@ -4,7 +4,7 @@ import { EventCardProps } from "./EventCardProps";
 import './EventCard.css';
 import { Link } from "react-router-dom";
 import { EventType } from "../../types/EventType";
-import { getRegion, getRegionById } from "../../utils/RegionsApi/RegionsApi";
+import { getRegion, getRegionById, getCityById } from "../../utils/RegionsApi/RegionsApi";
 
 
 export function EventCard({ id, title, files, start_datetime, location } : EventType) {
@@ -14,7 +14,7 @@ export function EventCard({ id, title, files, start_datetime, location } : Event
     useMemo(async() => {
       if(location?.region !== undefined) {
 
-        let res = await getRegionById(location?.region);
+        let res = await getCityById(location?.city);
         setRegion(res.name);
         console.log(res);
       }
