@@ -12,6 +12,10 @@
     max-width: 286px;
 }
 
+.event-card__image{
+    max-width: 286px;
+}
+
 .event-card__subtitle{
     margin: 16px 0 0 0;
     color: #D2D1D0;

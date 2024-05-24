@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import './EventsGrid.css';
 import testImage from '../../images/TestPhoto.svg';
 import { Select } from '../../UI/Select/Select';
@@ -6,16 +6,17 @@ import { EventCard } from '../EventCard/EventCard';
 import { CheckBox } from '../../UI/CheckBox/CheckBox';
 import { createEvent, getEvents } from '../../utils/EventsApi/EventsApi';
 import rectangle75 from './images/Rectangle75.svg';
+import { EventType } from '../../types/EventType';
 
 export function EventsGrid() {
 
   const  test = [1,2,3,4,5,6,7,8,9,10,11,12];
 
+  const [ events, setEvents ] = useState<EventType | null>(null);
+
   useMemo(async () => {
     let res = await getEvents();
-
-    // let res = await createEvent();
-
+    setEvents(res);
     console.log(res);
   }, [])
 
@@ -91,8 +92,11 @@ export function EventsGrid() {
         
               {/* Основная сетка с событиями */}
         <ul className="events-grid__list list-style">
-          {test.map(ivent => (
-            <EventCard id={ivent} key={ivent}/>
+          { events?.map((event: EventType , index:number) => (
+            <EventCard id={event.id} key={event.id} title={event.title} 
+            files={event.files} start_datetime={event.start_datetime}
+            location={event.location}
+            />
           ))}
         </ul>
 

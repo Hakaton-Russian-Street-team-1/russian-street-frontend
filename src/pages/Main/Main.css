@@ -7,9 +7,9 @@
     left: 50%;
     transform: translateX(-50%);
     height: 350px;
-    background-image: url(./images/neyro.png);
+    background-image: url(./images/neyro.svg);
     background-repeat: no-repeat;
-    /* background-position: center; */
+    background-size: cover;
     width: calc(100vw - 35px);
     margin: 53px 0 120px;
 }
@@ -82,6 +82,7 @@
 
 .main__gallery{
     background-image: url(./images/Gallery.png);
+    background-position: center;
     position: relative;
     left: 50%;
     transform: translateX(-50%);

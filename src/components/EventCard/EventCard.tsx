@@ -1,17 +1,31 @@
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import testImage from '../../images/TestPhoto.svg';
 import { EventCardProps } from "./EventCardProps";
 import './EventCard.css';
 import { Link } from "react-router-dom";
+import { EventType } from "../../types/EventType";
+import { getRegion, getRegionById } from "../../utils/RegionsApi/RegionsApi";
 
-export function EventCard({ id } : EventCardProps) {
+
+export function EventCard({ id, title, files, start_datetime, location } : EventType) {
+    
+    const [ region, setRegion ] = useState('');
+
+    useMemo(async() => {
+      if(location?.region !== undefined) {
+
+        let res = await getRegionById(location?.region);
+        setRegion(res.name);
+        console.log(res);
+      }
+    }, [])
 
     return (
           <li className="event-card__ivent">
             <Link to={`/events/${id}`} className='link'>
-            <img src={testImage} className="events-card__image" />
-            <p className="event-card__title">Открытие скейтпарка в Кемерово</p>
-            <p className="event-card__subtitle">15 июня, г. Кемерово</p>
+            { files !== undefined && files.length > 0 && <img src={files[0].file} className="event-card__image" />}
+            <p className="event-card__title">{title}</p>
+            <p className="event-card__subtitle">{start_datetime}. {region}</p>
             </Link>
           </li>
     )
