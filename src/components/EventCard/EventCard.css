@@ -5,19 +5,16 @@
 }
 
 .event-card__title{
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    font-size: 32px;
+    font-size: 20px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 600;
     line-height: 130%;
-    text-transform: uppercase;
-    max-width: 266px;
+    max-width: 286px;
 }
 
 .event-card__subtitle{
     margin: 16px 0 0 0;
+    color: #D2D1D0;
 }
 
 .link{

@@ -4,9 +4,23 @@
    align-items: center;
 }
 
+.menu_type_footer{
+   flex-direction: column;
+   gap: 20px;
+   align-items: start;
+}
+
 .menu__link{
    text-decoration: none;
    color: white;
+   font-size: 20px;
+   font-style: normal;
+   font-weight: 400;
+   line-height: 130%;
+}
+
+.menu__link_type_footer{
+   color: var(--grey, #D2D1D0);
    font-size: 20px;
    font-style: normal;
    font-weight: 400;

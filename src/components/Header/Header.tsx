@@ -42,7 +42,6 @@ export function Header() {
       <img className='header__logo' src={logo}/>
       { screenWidth > 768 ? <Menu /> : <MobileMenu isOpen={openMenu} toggleOpenMenu={toggleOpenMenu} />}
     </header>
-    <CurrentLocation />
   </>
   
 )

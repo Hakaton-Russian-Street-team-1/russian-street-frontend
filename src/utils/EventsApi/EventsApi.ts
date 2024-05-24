@@ -3,11 +3,21 @@ import { title } from "process";
 const baseUrl = 'https://streetsrussia.sytes.net/api/v1'
 
 export async function getEvents () {
-    let res = await fetch(`${baseUrl}/events`, {
-        method: 'GET'
-    });
-    let data = await res.json();
-    return data;
+    try{
+        let res = await fetch(`${baseUrl}/events`, {
+            method: 'GET'
+        });
+        if(res.ok){
+            let data = await res.json();
+            return data;
+        } else {
+            throw new Error('Произошла ошибка');
+        }
+    }
+    catch(err){
+        console.error(err);
+    }
+
 }
 
 export async function createEvent () {

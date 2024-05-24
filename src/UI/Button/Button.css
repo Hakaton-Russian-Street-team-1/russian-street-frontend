@@ -13,4 +13,5 @@
     text-transform: uppercase;
     cursor: pointer;
     text-align: center;
+    max-width: max-content;
 }

@@ -14,7 +14,7 @@
 	 height: 100%;
 }
  body {
-	 background-image: url('https://assets.codepen.io/1538474/star.svg'), linear-gradient(to bottom, #05007a, #4d007d);
+	 /* background-image: url('https://assets.codepen.io/1538474/star.svg'), linear-gradient(to bottom, #05007a, #4d007d); */
 	 height: 100%;
 	 margin: 0;
 	 background-attachment: fixed;

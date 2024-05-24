@@ -12,11 +12,11 @@ export function EventsGrid() {
   const  test = [1,2,3,4,5,6,7,8,9,10,11,12];
 
   useMemo(async () => {
-    // let res = await getEvents();
+    let res = await getEvents();
 
     // let res = await createEvent();
 
-    // console.log(res);
+    console.log(res);
   }, [])
 
   return (
@@ -31,8 +31,6 @@ export function EventsGrid() {
       </div>
 
       <div className="events-grid__flex-container">
-
-
 
         <div className="events-grid__sorting">
 
@@ -91,7 +89,6 @@ export function EventsGrid() {
 
         </div>
         
-
               {/* Основная сетка с событиями */}
         <ul className="events-grid__list list-style">
           {test.map(ivent => (
@@ -100,8 +97,6 @@ export function EventsGrid() {
         </ul>
 
       </div>
-
-
 
       {/* Сетка событий с блоком анимации   */}
       <ul className="events-grid__list_type_animaton list-style">

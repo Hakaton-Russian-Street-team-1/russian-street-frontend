@@ -19,10 +19,26 @@
 
 .content{
     flex:1;
-    padding: 40px 0 120px;
+    padding: 0 0 120px;
     width: 100%;
     max-width: 1280px;
     margin: 0 auto 0;
+    position: relative;
+    z-index: 2;
+}
+
+.content::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100vw - 30px);
+    right: 0;
+    bottom: 0;
+    background-image: url(./images/photo_2024-05-23_00-03-46.jpg);
+    opacity: 0.1;
+    z-index: -1;
 }
 
 .no-scroll{

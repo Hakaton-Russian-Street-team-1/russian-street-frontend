@@ -32,7 +32,7 @@ export function Slider() {
 
     useEffect(() => {
         if (sliderContentRef.current) {
-            sliderContentRef.current.style.transform = `translateX(-${currentSlide * 100}%)`;
+            sliderContentRef.current.style.transform = `translateX(-${currentSlide * 100}vw)`;
         }
     }, [currentSlide]);
 
