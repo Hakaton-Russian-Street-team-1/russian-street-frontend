@@ -33,6 +33,7 @@
    height: 28px;
    background-repeat: no-repeat;
    background-size: cover;
+   cursor:pointer;
 }
 
 @media screen and (max-width: 1230px) {
