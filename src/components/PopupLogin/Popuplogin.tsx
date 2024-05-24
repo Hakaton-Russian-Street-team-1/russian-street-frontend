@@ -5,6 +5,7 @@ import ClosePopupBtn from '../../images/closepopupbtn.svg';
 import ShowPasswordIcon from '../../images/show_password.svg';
 import HidePasswordIcon from '../../images/hide_password.svg';
 import { postLogin } from '../../utils/LogRegApi/LogRegapi';
+import { Regpopup } from '../PopupReg/Popupreg'; // Импортируем компонент регистрации
 
 interface PopuploginProps {
   closePopup: () => void;
@@ -19,6 +20,7 @@ export function Popuplogin({ closePopup, isOpen }: PopuploginProps) {
   const [passwordError, setPasswordError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [isButtonActive, setIsButtonActive] = useState(false);
+  const [isRegPopupOpen, setIsRegPopupOpen] = useState(false); // Состояние для попапа регистрации
 
   const navigate = useNavigate();
 
@@ -86,54 +88,65 @@ export function Popuplogin({ closePopup, isOpen }: PopuploginProps) {
     }
   };
 
+  const openRegPopup = () => {
+    setIsRegPopupOpen(true);
+  };
+
+  const closeRegPopup = () => {
+    setIsRegPopupOpen(false);
+  };
+
   return (
-    <div className={`PopuploginOverlay ${isOpen ? 'active' : ''}`} onClick={handleOverlayClick}>
-      <div className='PopuploginContainer'>
-        <div className='PopuploginPopup'>
-          <button className='PopuploginClose' onClick={closePopup}>
-            <img src={ClosePopupBtn} alt='Close' />
-          </button>
-          <form className='PopuploginForm' onSubmit={handleSubmit}>
-            <p className='PopuploginTitle'>Введите логин и пароль</p>
-            <label htmlFor='username' className='PopuploginLabel'>Логин</label>
-            <input
-              type='text'
-              id='username'
-              name='username'
-              placeholder='user123'
-              className={`PopuploginInput ${usernameError ? 'input-error' : ''}`}
-              value={username}
-              onChange={handleUsernameChange}
-            />
-            <small className={`PopuploginSmall ${usernameError ? 'error-message' : ''}`}>
-              {usernameError ? errorMessage : 'Можно изменить в личном кабинете'}
-            </small>
-            <label htmlFor='password' className='PopuploginLabel'>Пароль</label>
-            <div className='PopuploginPasswordWrapper'>
+    <>
+      <div className={`PopuploginOverlay ${isOpen ? 'active' : ''}`} onClick={handleOverlayClick}>
+        <div className='PopuploginContainer'>
+          <div className='PopuploginPopup'>
+            <button className='PopuploginClose' onClick={closePopup}>
+              <img src={ClosePopupBtn} alt='Close' />
+            </button>
+            <form className='PopuploginForm' onSubmit={handleSubmit}>
+              <p className='PopuploginTitle'>Введите логин и пароль</p>
+              <label htmlFor='username' className='PopuploginLabel'>Логин</label>
               <input
-                type={passwordType}
-                id='password'
-                name='password'
-                className={`PopuploginInput ${passwordError ? 'input-error' : ''}`}
-                placeholder='******'
-                value={password}
-                onChange={handlePasswordChange}
+                type='text'
+                id='username'
+                name='username'
+                placeholder='user123'
+                className={`PopuploginInput ${usernameError ? 'input-error' : ''}`}
+                value={username}
+                onChange={handleUsernameChange}
               />
-              <button type='button' className='PopuploginTogglePassword' onClick={togglePasswordVisibility}>
-                <img src={passwordType === 'password' ? ShowPasswordIcon : HidePasswordIcon} alt='Toggle Password Visibility' />
-              </button>
-            </div>
-            <small className={`PopuploginSmall ${passwordError ? 'error-message' : ''}`}>
-              {passwordError ? errorMessage : 'Можно изменить в личном кабинете'}
-            </small>
-            <div className='PopuploginButtons'>
-              <button type='submit' className='PopuploginLoginButton' disabled={!isButtonActive}>ВОЙТИ</button>
-              <button type='button' className='PopuploginRegisterButton'>ЗАРЕГИСТРИРОВАТЬСЯ</button>
-            </div>
-            <a href='#' className='PopuploginForgotPassword'>Забыли пароль?</a>
-          </form>
+              <small className={`PopuploginSmall ${usernameError ? 'error-message' : ''}`}>
+                {usernameError ? errorMessage : 'Можно изменить в личном кабинете'}
+              </small>
+              <label htmlFor='password' className='PopuploginLabel'>Пароль</label>
+              <div className='PopuploginPasswordWrapper'>
+                <input
+                  type={passwordType}
+                  id='password'
+                  name='password'
+                  className={`PopuploginInput ${passwordError ? 'input-error' : ''}`}
+                  placeholder='******'
+                  value={password}
+                  onChange={handlePasswordChange}
+                />
+                <button type='button' className='PopuploginTogglePassword' onClick={togglePasswordVisibility}>
+                  <img src={passwordType === 'password' ? ShowPasswordIcon : HidePasswordIcon} alt='Toggle Password Visibility' />
+                </button>
+              </div>
+              <small className={`PopuploginSmall ${passwordError ? 'error-message' : ''}`}>
+                {passwordError ? errorMessage : 'Можно изменить в личном кабинете'}
+              </small>
+              <div className='PopuploginButtons'>
+                <button type='submit' className='PopuploginLoginButton' disabled={!isButtonActive}>ВОЙТИ</button>
+                <button type='button' className='PopuploginRegisterButton' onClick={openRegPopup}>ЗАРЕГИСТРИРОВАТЬСЯ</button>
+              </div>
+              <a href='#' className='PopuploginForgotPassword'>Забыли пароль?</a>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+      <Regpopup isOpen={isRegPopupOpen} closePopup={closeRegPopup} />
+    </>
   );
 }
