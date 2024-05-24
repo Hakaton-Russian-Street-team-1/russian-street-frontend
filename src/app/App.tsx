@@ -3,6 +3,7 @@ import './App.css';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { Header, Footer } from '../components/Components';
 import { AboutUs, Contacts, Directions, Events, Blog, Main, Event, NotFoundPage, Blogevent } from '../pages/pages';
+import { PopupParty } from '../components/PopupForParty/PopupforParty';
 
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
     <div className='page'>
       <Header />
       <div className='content'>
+        {/* <PopupParty isOpen={true} closePopup={() => {}}/> */}
       <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/events' element={<Events />} />

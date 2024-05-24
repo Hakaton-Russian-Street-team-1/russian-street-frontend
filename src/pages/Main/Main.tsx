@@ -11,7 +11,7 @@ import one from './images/11.png';
 import two from './images/12.png';
 import three from './images/21.png';
 import four from './images/22.png';
-import neyro from './images/neyro.png';
+import neyro from './images/neyro.svg';
 import ytlogo from './images/ytlogo.svg';
 import { partner1, partner2, partner3, partner4, partner5, partner6, partner7 } from './partners';
 import { Link } from 'react-router-dom';

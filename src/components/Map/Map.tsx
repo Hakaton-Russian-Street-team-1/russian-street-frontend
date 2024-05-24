@@ -61,9 +61,9 @@ export function Map() {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           //@ts-ignore   
-          xmlnsSvg="http://www.w3.org/2000/svg"
+          xmlnssvg="http://www.w3.org/2000/svg"
           xmlnsXlink="http://www.w3.org/1999/xlink"
-          xmlnsXml="http://www.w3.org/XML/1998/namespace"
+          xmlnsxml="http://www.w3.org/XML/1998/namespace"
           x="0"
           y="0"
           baseProfile="tiny"

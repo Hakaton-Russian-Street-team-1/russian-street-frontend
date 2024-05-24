@@ -4,7 +4,7 @@ const baseUrl = 'https://streetsrussia.sytes.net/api/v1'
 
 export async function getEvents () {
     try{
-        let res = await fetch(`${baseUrl}/events`, {
+        let res = await fetch(`${baseUrl}/events/`, {
             method: 'GET'
         });
         if(res.ok){
