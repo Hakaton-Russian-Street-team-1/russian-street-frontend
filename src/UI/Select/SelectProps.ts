@@ -1,4 +1,5 @@
 export interface SelectProps {
-    options: string[];
+    defaultOption: string;
+    options: string[] | null;
     whiteTheme?: Boolean;
 }

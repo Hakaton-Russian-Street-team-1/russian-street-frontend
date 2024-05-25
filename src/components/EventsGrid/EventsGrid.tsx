@@ -10,6 +10,8 @@ import { EventType } from '../../types/EventType';
 import { CheckBoxPlusMinus } from '../../UI/CheckBoxPlusMinus/CheckBoxPlusMinus';
 import { getCategory, getDescipline, getDesciplineById, getSubDescipline, getSubDesciplineById } from '../../utils/categoryApi/categoryApi';
 import { CheckboxFieldset } from '../CheckboxFieldset/CheckboxFieldset';
+import { getCity, getRegion } from '../../utils/RegionsApi/RegionsApi';
+import { RegionType } from '../../types/RegionType';
 
 export function EventsGrid() {
 
@@ -19,23 +21,33 @@ export function EventsGrid() {
 
   const [ disciplineId, setDisciplineId ] = useState<number[] | null>(null);
   const [ subDiscipline, setSubDiscipline ] = useState(null);
-
-  useMemo(async () => {
-    let res = await getEvents();
-    setEvents(res);
-    // console.log(res);
-  }, [])
+  const [ regionList, setRegionList ] = useState<string[] | null>(null)
+  const [ cityList, setCityList ] = useState<string[] | null>(null)
+  const [directions, setDirections] = useState<string[] | null>(null);
 
   useMemo(async() => {
-    // let res = await getCategory()
-    let res = await getDescipline();
-    // let res = await getDesciplineById(1);
-    let res2 = await getSubDescipline();
-    setSubDiscipline(res2);
-    // let res = await getSubDesciplineById(1);
-    let idArray = res.map((item:{id:number}) => item.id);
 
+    let desciplineRes = await getDescipline();
+    const descipline = desciplineRes.map((item:any) => item.name);
+    console.log(descipline)
+    setDirections(descipline);
+
+    let subDiscipline = await getSubDescipline();
+    setSubDiscipline(subDiscipline);
+    let idArray = desciplineRes.map((item:{id:number}) => item.id);
     setDisciplineId(idArray);
+
+
+    let events = await getEvents();
+    setEvents(events);
+
+    let regionsRes = await getRegion();
+    const regions = regionsRes.map((item:RegionType) => item.name);
+    setRegionList(regions);
+    
+    let cityRes = await getCity();
+    const cities = cityRes.map((item:RegionType) => item.name);
+    setCityList(cities);
 
   }, [])
 
@@ -44,9 +56,10 @@ export function EventsGrid() {
       <div className="events-grid__menu">
 
         {/* Сортировка событий */}
-        <Select options={['Выбрать регион']}/>
-        <Select options={['Мероприятия']}/>
-        <Select options={['Сначала популярные']}/>
+        <Select defaultOption={'Выбрать регион'} options={regionList}/>
+        <Select defaultOption={'Выбрать город'} options={cityList}/>
+        <Select defaultOption={'Направление'} options={directions}/>
+        <Select defaultOption={'Сначала популярные'} options={['Сначала новые']}/>
 
       </div>
 

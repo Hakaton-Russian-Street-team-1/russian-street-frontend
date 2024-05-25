@@ -34,6 +34,23 @@ export async function getRegion () {
     }
   }
 
+  export async function getCity () {
+    try{
+        let res = await fetch(`${baseUrl}/city/`, {
+            method: 'GET'
+        });
+        if(res.ok){
+            let data = await res.json();
+            return data;
+        } else {
+            throw new Error('Произошла ошибка');
+        }
+    }
+    catch(err){
+        console.error(err);
+    }
+  }
+
   export async function getCityById (id:number) {
     try{
         let res = await fetch(`${baseUrl}/city/${id}`, {
