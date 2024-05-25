@@ -8,6 +8,8 @@ import { createEvent, getEvents } from '../../utils/EventsApi/EventsApi';
 import rectangle75 from './images/Rectangle75.svg';
 import { EventType } from '../../types/EventType';
 import { CheckBoxPlusMinus } from '../../UI/CheckBoxPlusMinus/CheckBoxPlusMinus';
+import { getCategory, getDescipline, getDesciplineById, getSubDescipline, getSubDesciplineById } from '../../utils/categoryApi/categoryApi';
+import { CheckboxFieldset } from '../CheckboxFieldset/CheckboxFieldset';
 
 export function EventsGrid() {
 
@@ -15,10 +17,26 @@ export function EventsGrid() {
 
   const [ events, setEvents ] = useState<EventType | null>(null);
 
+  const [ disciplineId, setDisciplineId ] = useState<number[] | null>(null);
+  const [ subDiscipline, setSubDiscipline ] = useState(null);
+
   useMemo(async () => {
     let res = await getEvents();
     setEvents(res);
-    console.log(res);
+    // console.log(res);
+  }, [])
+
+  useMemo(async() => {
+    // let res = await getCategory()
+    let res = await getDescipline();
+    // let res = await getDesciplineById(1);
+    let res2 = await getSubDescipline();
+    setSubDiscipline(res2);
+    // let res = await getSubDesciplineById(1);
+    let idArray = res.map((item:{id:number}) => item.id);
+
+    setDisciplineId(idArray);
+
   }, [])
 
   return (
@@ -47,52 +65,13 @@ export function EventsGrid() {
               </div>
             </div>
 
-            <fieldset className="events-grid__sorting-item">
-            <CheckBoxPlusMinus id='platforms'>Площадки</CheckBoxPlusMinus>
-            <CheckBox id='street-location'>Уличные локации</CheckBox>
-            <CheckBox id='indoor location'>Крытые локации</CheckBox>
-            </fieldset>
-
-            <fieldset className="events-grid__sorting-item">
-            <CheckBoxPlusMinus id='events'>Мероприятия</CheckBoxPlusMinus>
-            <CheckBox id='competitions'>Соревнования</CheckBox>
-            <CheckBox id='training'>Тренировки</CheckBox>
-            <CheckBox id='master-classes'>Мастер классы</CheckBox>
-            </fieldset>
-
-            <fieldset className="events-grid__sorting-item">
-            <CheckBoxPlusMinus id='music'>Музыка</CheckBoxPlusMinus>
-            <CheckBox id='rap'>Рэп</CheckBox>
-            <CheckBox id='MC-ing'>Эмсиинг</CheckBox>
-            <CheckBox id='DJ-ing'>Диджеинг</CheckBox>
-            </fieldset>
-
-            <fieldset className="events-grid__sorting-item">
-            <CheckBoxPlusMinus id='sport'>Спорт</CheckBoxPlusMinus>
-            <CheckBox id='parkur'>Паркур</CheckBox>
-            <CheckBox id='workout'>Воркаут</CheckBox>
-            <CheckBox id='freerun'>Фриран</CheckBox>
-            </fieldset>
-
-            
-            <fieldset className="events-grid__sorting-item">
-            <CheckBoxPlusMinus id='dance'>Танцы</CheckBoxPlusMinus>
-            <CheckBox id='hip-hop'>Хип-хоп</CheckBox>
-            <CheckBox id='braking'>Брейкинг</CheckBox>
-            <CheckBox id='toprock'>Топрок</CheckBox>
-            </fieldset>
-
-            <fieldset className="events-grid__sorting-item">
-            <CheckBoxPlusMinus id='art'>Искусство</CheckBoxPlusMinus>
-            <CheckBox id='graffiti'>Граффити</CheckBox>
-            <CheckBox id='posters'>Постеры</CheckBox>
-            <CheckBox id='calligraphy'>Каллиграфия</CheckBox>
-            </fieldset>
-
+            { disciplineId && disciplineId.map(id => <CheckboxFieldset disciplineId={id} subDiscipline={subDiscipline} key={id}/>)
+            }
         </div>
         
               {/* Основная сетка с событиями */}
         <ul className="events-grid__list list-style">
+          {/* @ts-ignore */}
           { events?.map((event: EventType , index:number) => (
             <EventCard id={event.id} key={event.id} title={event.title} 
             files={event.files} start_datetime={event.start_datetime}
