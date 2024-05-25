@@ -42,6 +42,7 @@
 .events-grid__sorting{
     box-sizing: border-box;
     display: flex;
+    gap: 24px;
     flex-direction: column;
     border: none;
     padding: 0;
@@ -60,7 +61,6 @@
 
 .region-representative__text{
     box-sizing: border-box;
-
     max-width: 229px;
 }
 
@@ -70,8 +70,16 @@
     flex-direction: column;
     align-items: start;
     width: 100%;
-    padding: 12px 2% 12px;
+    /* padding: 12px 0 12px 24px; */
     border: none;
+}
+
+.events-grid__sorting-item label{
+    padding: 0 0 0 24px;
+}
+
+.events-grid__sorting-item label:first-child{
+    padding: 0;
 }
 
 .events-grid__ivent_type_animation{

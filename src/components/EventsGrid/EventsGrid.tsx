@@ -7,6 +7,7 @@ import { CheckBox } from '../../UI/CheckBox/CheckBox';
 import { createEvent, getEvents } from '../../utils/EventsApi/EventsApi';
 import rectangle75 from './images/Rectangle75.svg';
 import { EventType } from '../../types/EventType';
+import { CheckBoxPlusMinus } from '../../UI/CheckBoxPlusMinus/CheckBoxPlusMinus';
 
 export function EventsGrid() {
 
@@ -47,27 +48,27 @@ export function EventsGrid() {
             </div>
 
             <fieldset className="events-grid__sorting-item">
-            <CheckBox id='platforms'>Площадки</CheckBox>
+            <CheckBoxPlusMinus id='platforms'>Площадки</CheckBoxPlusMinus>
             <CheckBox id='street-location'>Уличные локации</CheckBox>
             <CheckBox id='indoor location'>Крытые локации</CheckBox>
             </fieldset>
 
             <fieldset className="events-grid__sorting-item">
-            <CheckBox id='events'>Мероприятия</CheckBox>
+            <CheckBoxPlusMinus id='events'>Мероприятия</CheckBoxPlusMinus>
             <CheckBox id='competitions'>Соревнования</CheckBox>
             <CheckBox id='training'>Тренировки</CheckBox>
             <CheckBox id='master-classes'>Мастер классы</CheckBox>
             </fieldset>
 
             <fieldset className="events-grid__sorting-item">
-            <CheckBox id='music'>Музыка</CheckBox>
+            <CheckBoxPlusMinus id='music'>Музыка</CheckBoxPlusMinus>
             <CheckBox id='rap'>Рэп</CheckBox>
             <CheckBox id='MC-ing'>Эмсиинг</CheckBox>
             <CheckBox id='DJ-ing'>Диджеинг</CheckBox>
             </fieldset>
 
             <fieldset className="events-grid__sorting-item">
-            <CheckBox id='sport'>Спорт</CheckBox>
+            <CheckBoxPlusMinus id='sport'>Спорт</CheckBoxPlusMinus>
             <CheckBox id='parkur'>Паркур</CheckBox>
             <CheckBox id='workout'>Воркаут</CheckBox>
             <CheckBox id='freerun'>Фриран</CheckBox>
@@ -75,14 +76,14 @@ export function EventsGrid() {
 
             
             <fieldset className="events-grid__sorting-item">
-            <CheckBox id='dance'>Танцы</CheckBox>
+            <CheckBoxPlusMinus id='dance'>Танцы</CheckBoxPlusMinus>
             <CheckBox id='hip-hop'>Хип-хоп</CheckBox>
             <CheckBox id='braking'>Брейкинг</CheckBox>
             <CheckBox id='toprock'>Топрок</CheckBox>
             </fieldset>
 
             <fieldset className="events-grid__sorting-item">
-            <CheckBox id='arp'>Искусство</CheckBox>
+            <CheckBoxPlusMinus id='art'>Искусство</CheckBoxPlusMinus>
             <CheckBox id='graffiti'>Граффити</CheckBox>
             <CheckBox id='posters'>Постеры</CheckBox>
             <CheckBox id='calligraphy'>Каллиграфия</CheckBox>
