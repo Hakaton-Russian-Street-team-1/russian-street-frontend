@@ -13,10 +13,6 @@
     margin-bottom: 4px;
 }
 
-.checkBoxLabel_type_black{
-  color: black;
-}
-
 .checkBoxLabel:first-child{
     margin-bottom: 15px;
 }
@@ -30,27 +26,22 @@
   }
 
 
-.form__pseudo-item{
+.form__pseudo-item_type_plus-minus{
     display: inline-block; /* элемент span теперь сможет принимать определённую ширину и высоту */
     vertical-align: middle; /* элемент и текст будут правильно выровнены по вертикали. Работает в паре с inline-block */
     width: 24px;
     height: 24px; /* размеры */
     border: 1px solid white; /* граница */
-}
-
-  .form__pseudo-item_type_black{
-    border: 1px solid black; /* граница */
+    background-image: url(./images/minus.svg);
+    background-position: center;
+    background-repeat: no-repeat;
   }
   
-  .form__item_el_extra-options:checked + .form__pseudo-item_type_checkbox{
-    background-image: url(./images/checkbox.svg);
+  .form__item_el_extra-options:checked + .form__pseudo-item_type_plus-minus{
+    background-image: url(./images/plus.svg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-   }
-
-   .form__item_el_extra-options:checked + .form__pseudo-item_type_checkbox_type_black{
-    background-image: url(./images/checkboxBlack.png);
    }
   
   .form__item_el_extra-options:disabled + .form__pseudo-item_type_checkbox{

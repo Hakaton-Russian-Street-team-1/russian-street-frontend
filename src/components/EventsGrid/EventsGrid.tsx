@@ -1,33 +1,67 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import './EventsGrid.css';
-import testImage from '../../images/TestPhoto.svg';
 import { Select } from '../../UI/Select/Select';
 import { EventCard } from '../EventCard/EventCard';
-import { CheckBox } from '../../UI/CheckBox/CheckBox';
 import { createEvent, getEvents } from '../../utils/EventsApi/EventsApi';
 import rectangle75 from './images/Rectangle75.svg';
 import { EventType } from '../../types/EventType';
+import { getCategory, getDescipline, getDesciplineById, getSubDescipline, getSubDesciplineById } from '../../utils/categoryApi/categoryApi';
+import { CheckboxFieldset } from '../CheckboxFieldset/CheckboxFieldset';
+import { getCity, getRegion } from '../../utils/RegionsApi/RegionsApi';
+import { RegionType } from '../../types/RegionType';
+import { UseFilter } from '../../app/hooks/UseFilter';
 
 export function EventsGrid() {
 
-  const  test = [1,2,3,4,5,6,7,8,9,10,11,12];
-
   const [ events, setEvents ] = useState<EventType | null>(null);
 
-  useMemo(async () => {
-    let res = await getEvents();
-    setEvents(res);
-    console.log(res);
+  const [ disciplineId, setDisciplineId ] = useState<number[] | null>(null);
+  const [ subDiscipline, setSubDiscipline ] = useState(null);
+  const [ regionList, setRegionList ] = useState<string[] | null>(null)
+  const [ cityList, setCityList ] = useState<string[] | null>(null)
+  const [directions, setDirections] = useState<string[] | null>(null);
+
+  useMemo(async() => {
+
+    let desciplineRes = await getDescipline();
+    const descipline = desciplineRes.map((item:any) => item.name);
+    setDirections(descipline);
+
+    let subDiscipline = await getSubDescipline();
+    setSubDiscipline(subDiscipline);
+    let idArray = desciplineRes.map((item:{id:number}) => item.id);
+    setDisciplineId(idArray);
+
+
+    let events = await getEvents();
+    setEvents(events);
+
+    let regionsRes = await getRegion();
+    const regions = regionsRes.map((item:RegionType) => item.name);
+    setRegionList(regions);
+    
+    let cityRes = await getCity();
+    const cities = cityRes.map((item:RegionType) => item.name);
+    setCityList(cities);
+
   }, [])
+
+  const { changeRegion } = UseFilter();
+
+  useMemo(() => {
+    console.log(events);
+  }, [events])
+
 
   return (
     <section className="events-grid">
       <div className="events-grid__menu">
 
         {/* Сортировка событий */}
-        <Select options={['Выбрать регион']}/>
-        <Select options={['Мероприятия']}/>
-        <Select options={['Сначала популярные']}/>
+        <Select defaultOption={'Выбрать регион'} options={regionList} onChange={changeRegion}/>
+        <Select defaultOption={'Выбрать город'} options={cityList}/>
+        <Select defaultOption={'Направление'} options={directions}/>
+        <Select defaultOption={'Сначала популярные'} options={['Сначала новые']}/>
 
       </div>
 
@@ -46,52 +80,13 @@ export function EventsGrid() {
               </div>
             </div>
 
-            <fieldset className="events-grid__sorting-item">
-            <CheckBox id='platforms'>Площадки</CheckBox>
-            <CheckBox id='street-location'>Уличные локации</CheckBox>
-            <CheckBox id='indoor location'>Крытые локации</CheckBox>
-            </fieldset>
-
-            <fieldset className="events-grid__sorting-item">
-            <CheckBox id='events'>Мероприятия</CheckBox>
-            <CheckBox id='competitions'>Соревнования</CheckBox>
-            <CheckBox id='training'>Тренировки</CheckBox>
-            <CheckBox id='master-classes'>Мастер классы</CheckBox>
-            </fieldset>
-
-            <fieldset className="events-grid__sorting-item">
-            <CheckBox id='music'>Музыка</CheckBox>
-            <CheckBox id='rap'>Рэп</CheckBox>
-            <CheckBox id='MC-ing'>Эмсиинг</CheckBox>
-            <CheckBox id='DJ-ing'>Диджеинг</CheckBox>
-            </fieldset>
-
-            <fieldset className="events-grid__sorting-item">
-            <CheckBox id='sport'>Спорт</CheckBox>
-            <CheckBox id='parkur'>Паркур</CheckBox>
-            <CheckBox id='workout'>Воркаут</CheckBox>
-            <CheckBox id='freerun'>Фриран</CheckBox>
-            </fieldset>
-
-            
-            <fieldset className="events-grid__sorting-item">
-            <CheckBox id='dance'>Танцы</CheckBox>
-            <CheckBox id='hip-hop'>Хип-хоп</CheckBox>
-            <CheckBox id='braking'>Брейкинг</CheckBox>
-            <CheckBox id='toprock'>Топрок</CheckBox>
-            </fieldset>
-
-            <fieldset className="events-grid__sorting-item">
-            <CheckBox id='arp'>Искусство</CheckBox>
-            <CheckBox id='graffiti'>Граффити</CheckBox>
-            <CheckBox id='posters'>Постеры</CheckBox>
-            <CheckBox id='calligraphy'>Каллиграфия</CheckBox>
-            </fieldset>
-
+            { disciplineId && disciplineId.map(id => <CheckboxFieldset disciplineId={id} subDiscipline={subDiscipline} key={id}/>)
+            }
         </div>
         
               {/* Основная сетка с событиями */}
         <ul className="events-grid__list list-style">
+          {/* @ts-ignore */}
           { events?.map((event: EventType , index:number) => (
             <EventCard id={event.id} key={event.id} title={event.title} 
             files={event.files} start_datetime={event.start_datetime}
@@ -103,7 +98,7 @@ export function EventsGrid() {
       </div>
 
       {/* Сетка событий с блоком анимации   */}
-      <ul className="events-grid__list_type_animaton list-style">
+      {/* <ul className="events-grid__list_type_animaton list-style">
 
         <li className="events-grid__ivent">
             <img src={testImage} className="events-grid__image" />
@@ -120,7 +115,7 @@ export function EventsGrid() {
             <p className="events-grid__title">Открытие скейтпарка в Кемерово</p>
             <p className="events-grid__subtitle">15 июня, г. Кемерово</p>
         </li>
-      </ul>
+      </ul> */}
 
     </section>
   )

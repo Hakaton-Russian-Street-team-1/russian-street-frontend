@@ -177,6 +177,7 @@
     background-image: url(./images/Container.png);
     background-repeat: no-repeat;
     background-position: bottom;
+    margin: 0 0 120px;
 }
 
 .main__partners{

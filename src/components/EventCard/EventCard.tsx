@@ -13,10 +13,8 @@ export function EventCard({ id, title, files, start_datetime, location } : Event
 
     useMemo(async() => {
       if(location?.region !== undefined) {
-
         let res = await getCityById(location?.city);
         setRegion(res.name);
-        console.log(res);
       }
     }, [])
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import './Main.css';
 import logo from './images/logo-08.png';
 import { Button } from '../../UI/Button/Button';
@@ -17,6 +17,7 @@ import { partner1, partner2, partner3, partner4, partner5, partner6, partner7 } 
 import { Link } from 'react-router-dom';
 import { EventCard } from '../../components/EventCard/EventCard';
 import { CheckBox } from '../../UI/CheckBox/CheckBox';
+import { getNews } from '../../utils/newsApi/newsApi';
 
 
 
@@ -31,6 +32,11 @@ export function Main() {
     const text = 'у тебя всё получится '.repeat(repeatCount);
     return <span className="skate-event__text">{text}</span>;
   }
+
+  useMemo(async() => {
+    let res = await getNews();
+    console.log(res);
+  }, [])
 
 
   return (<main className='main'>
@@ -177,10 +183,10 @@ export function Main() {
     <h3 className='main__title'>Блог</h3>
 
     <ul className='main__news list-style'>
-      <EventCard id={1}/>
+      {/* <EventCard id={1}/>
       <EventCard id={2}/>
       <EventCard id={3}/>
-      <EventCard id={4}/>
+      <EventCard id={4}/> */}
     </ul>
     
 
@@ -212,7 +218,7 @@ export function Main() {
         <div className='main__application-form-container'>
           <label>
             <p className='main__application-form-input-name'>Телефон*</p>
-            <input placeholder='Телефон' type='tel' id="phone" name="phone" className='main__application-form-input' pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required></input>
+            <input placeholder='Телефон' type='tel' id="phoneMain" name="phone" className='main__application-form-input' pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required></input>
           </label>
           
           <label>
