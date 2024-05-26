@@ -537,8 +537,9 @@ export function Regpopup({ closePopup, isOpen, openLoginPopup }: RegpopupProps) 
 
               
               </div>
-              <p className='Regpopup__support'>Если у вас возникли какие‑то проблемы, обратитесь в службу поддержки support@mail.ru</p>
               {devMessage && <div className="Regpopup__dev-message">В разработке</div>}
+              <p className='Regpopup__support'>Если у вас возникли какие‑то проблемы, обратитесь в службу поддержки support@mail.ru</p>
+              
             </form>
           </>
         ) : (
