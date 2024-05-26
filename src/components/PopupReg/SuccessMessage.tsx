@@ -7,54 +7,42 @@ import { Popuplogin } from '../PopupLogin/Popuplogin';
 interface SuccessMessageProps {
   onLoginClick: () => void;
   onHomeClick: () => void;
+  isOpen: boolean;
 }
 
-export const SuccessMessage: React.FC<SuccessMessageProps> = ({ onLoginClick, onHomeClick }) => {
+export const SuccessMessage: React.FC<SuccessMessageProps> = ({ onLoginClick, onHomeClick, isOpen }) => {
   const navigate = useNavigate();
   const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
-  const [isMessageVisible, setIsMessageVisible] = useState(true);
+
+  if (!isOpen) return null;
 
   const handleLoginClick = () => {
     setIsLoginPopupOpen(true);
-    setIsMessageVisible(false);
-    onLoginClick(); // Close the registration popup
+    onLoginClick();
   };
 
   const handleHomeClick = () => {
-    setIsMessageVisible(false);
+    onHomeClick();
     navigate('/');
-    onHomeClick(); // Close the registration popup
-  };
-
-  const closeLoginPopup = () => {
-    setIsLoginPopupOpen(false);
-    setIsMessageVisible(true);
-  };
-
-  const closeMessagePopup = () => {
-    setIsMessageVisible(false);
-    onHomeClick(); // Close the registration popup
   };
 
   return (
     <>
-      {isMessageVisible && (
-        <div className={`SuccessMessage__overlay ${isMessageVisible ? 'SuccessMessage__overlay_active' : ''}`}>
-          <div className="SuccessMessage">
-            <h2>Спасибо! Мы получили ваши данные и уже начали обработку :)</h2>
-            <p>После модерации вашей заявки на вашу почту придёт письмо с логином и паролем</p>
-            <div className="SuccessMessage__buttons">
-              <button onClick={handleLoginClick} className="SuccessMessage__button">ВОЙТИ</button>
-              <button onClick={handleHomeClick} className="SuccessMessage__button">НА ГЛАВНУЮ</button>
-            </div>
-            <p className="SuccessMessage__support">Если вы не получили письмо свяжитесь со службой поддержки support@mail.ru.</p>
-            <button onClick={closeMessagePopup} className="SuccessMessage__close-button">
-              <img src={ClosePopupBtn} alt='Close' />
-            </button>
+      <div className={`SuccessMessage__overlay ${isOpen ? 'SuccessMessage__overlay_active' : ''}`}>
+        <div className="SuccessMessage">
+          <h2>Спасибо! Мы получили ваши данные и уже начали обработку :)</h2>
+          <p>После модерации вашей заявки на вашу почту придёт письмо с логином и паролем</p>
+          <div className="SuccessMessage__buttons">
+            <button onClick={handleLoginClick} className="SuccessMessage__button">ВОЙТИ</button>
+            <button onClick={handleHomeClick} className="SuccessMessage__button">НА ГЛАВНУЮ</button>
           </div>
+          <p className="SuccessMessage__support">Если вы не получили письмо свяжитесь со службой поддержки support@mail.ru.</p>
+          <button onClick={onHomeClick} className="SuccessMessage__close-button">
+            <img src={ClosePopupBtn} alt='Close' />
+          </button>
         </div>
-      )}
-      <Popuplogin isOpen={isLoginPopupOpen} closePopup={closeLoginPopup} />
+      </div>
+      <Popuplogin isOpen={isLoginPopupOpen} closePopup={() => setIsLoginPopupOpen(false)} />
     </>
   );
 };

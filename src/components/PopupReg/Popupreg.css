@@ -32,7 +32,12 @@
   opacity: 0;
   transition: transform 0.3s ease, opacity 0.3s ease;
   width: 826px; /* Fixed width */
-  height: 968px; /* Fixed height */
+  height: 719px; /* Fixed height */
+}
+
+.Regpopup__content--hidden {
+  transform: translateY(0%);
+  opacity: 1;
 }
 
 .Regpopup_active .Regpopup__content {
@@ -102,7 +107,6 @@
 
 .Regpopup__field--city {
   width: 288px;
-  height: 100px;
 }
 
 .Regpopup__label {
@@ -266,6 +270,10 @@
   margin: -31px 0 0 0;
 }
 
+.Regpopup__content.hidden {
+  display: none;
+}
+
 .Regpopup__support {
   color: var(--dark-grey, #222);
   font-family: Bahnschrift;
@@ -274,8 +282,4 @@
   font-weight: 400;
   line-height: 130%; /* 16.9px */
   margin: 0;
-}
-
-.Regpopup__content.hidden {
-  display: none;
 }
