@@ -5,7 +5,7 @@ import ClosePopupBtn from '../../images/closepopupbtn.svg';
 import ShowPasswordIcon from '../../images/show_password.svg';
 import HidePasswordIcon from '../../images/hide_password.svg';
 import { postLogin } from '../../utils/LogRegApi/LogRegapi';
-import { Regpopup } from '../PopupReg/Popupreg'; // Импортируем компонент регистрации
+import { Regpopup } from '../PopupReg/Popupreg';
 
 interface PopuploginProps {
   closePopup: () => void;
@@ -20,7 +20,7 @@ export function Popuplogin({ closePopup, isOpen }: PopuploginProps) {
   const [passwordError, setPasswordError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [isButtonActive, setIsButtonActive] = useState(false);
-  const [isRegPopupOpen, setIsRegPopupOpen] = useState(false); // Состояние для попапа регистрации
+  const [isRegPopupOpen, setIsRegPopupOpen] = useState(false);
 
   const navigate = useNavigate();
 
@@ -90,6 +90,7 @@ export function Popuplogin({ closePopup, isOpen }: PopuploginProps) {
 
   const openRegPopup = () => {
     setIsRegPopupOpen(true);
+    closePopup();
   };
 
   const closeRegPopup = () => {
@@ -146,7 +147,7 @@ export function Popuplogin({ closePopup, isOpen }: PopuploginProps) {
           </div>
         </div>
       </div>
-      <Regpopup isOpen={isRegPopupOpen} closePopup={closeRegPopup} />
+      <Regpopup isOpen={isRegPopupOpen} closePopup={closeRegPopup} openLoginPopup={closePopup} />
     </>
   );
 }
