@@ -248,7 +248,7 @@ export function Regpopup({ closePopup, isOpen, openLoginPopup }: RegpopupProps) 
 
   return (
     <div className={`Regpopup ${isOpen ? 'Regpopup_active' : ''}`} onClick={handleClickOutside}>
-      <div className={`Regpopup__content ${isSubmitted ? 'Regpopup__content--hidden' : ''}`}>
+      <div className='Regpopup__content'>
         <button className='Regpopup__close' onClick={closePopup}>
           <img src={ClosePopupBtn} alt='Close' />
         </button>
@@ -417,7 +417,7 @@ export function Regpopup({ closePopup, isOpen, openLoginPopup }: RegpopupProps) 
               </div>
 
               <h2 className='Regpopup__title'>Паспортные данные*</h2>
-              <h3 className='Regpopup__subtitle'>Эта информация необходима для проверки службой безопасности</h3>
+              <h3 className='Regpopup__subtitle'>Эта информация необходима для проверки службой безопасности</h3>
               <div className='Regpopup__section'>
                 <div className={`Regpopup__field Regpopup__field--small ${formErrors.passport_series ? 'Regpopup__field--error' : ''}`}>
                   <label className='Regpopup__label' htmlFor='passport_series'>Серия паспорта</label>
@@ -534,7 +534,10 @@ export function Regpopup({ closePopup, isOpen, openLoginPopup }: RegpopupProps) 
                 <button type='submit' className={`Regpopup__button Regpopup__button--register ${!isFormValid ? 'Regpopup__button--disabled' : ''}`} disabled={!isFormValid}>
                   ЗАРЕГИСТРИРОВАТЬСЯ
                 </button>
+
+              
               </div>
+              <p className='Regpopup__support'>Если у вас возникли какие‑то проблемы, обратитесь в службу поддержки support@mail.ru</p>
               {devMessage && <div className="Regpopup__dev-message">В разработке</div>}
             </form>
           </>
