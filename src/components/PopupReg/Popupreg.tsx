@@ -1,5 +1,6 @@
 import React from 'react';
 import './Popupreg.css';
+import { CheckBox } from '../../UI/CheckBox/CheckBox';
 
 interface RegpopupProps {
   closePopup: () => void;
@@ -81,12 +82,14 @@ export function Regpopup({ closePopup, isOpen }: RegpopupProps) {
           {/* Agreements */}
           <div className='Regpopup__agreements'>
             <div className='Regpopup__agreement'>
-              <input type='checkbox' id='agreement1' />
-              <label htmlFor='agreement1'>Я согласен с правилами и обязанностями члена ООО УКС "Улицы России"</label>
+              <CheckBox id='agreement1' theme='black'>Я согласен с правилами и обязанностями члена ООО УКС "Улицы России"</CheckBox>
+              {/* <input type='checkbox' id='agreement1' /> */}
+              {/* <label htmlFor='agreement1'>Я согласен с правилами и обязанностями члена ООО УКС "Улицы России"</label> */}
             </div>
             <div className='Regpopup__agreement'>
-              <input type='checkbox' id='agreement2' />
-              <label htmlFor='agreement2'>Я согласен(на) на обработку персональных данных</label>
+            <CheckBox id='agreement2' theme='black'>Я согласен(на) на обработку персональных данных</CheckBox>
+              {/* <input type='checkbox' id='agreement2' />
+              <label htmlFor='agreement2'>Я согласен(на) на обработку персональных данных</label> */}
             </div>
           </div>
 

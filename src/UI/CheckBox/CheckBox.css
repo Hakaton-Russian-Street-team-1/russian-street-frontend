@@ -13,6 +13,10 @@
     margin-bottom: 4px;
 }
 
+.checkBoxLabel_type_black{
+  color: black;
+}
+
 .checkBoxLabel:first-child{
     margin-bottom: 15px;
 }
@@ -32,6 +36,10 @@
     width: 24px;
     height: 24px; /* размеры */
     border: 1px solid white; /* граница */
+}
+
+  .form__pseudo-item_type_black{
+    border: 1px solid black; /* граница */
   }
   
   .form__item_el_extra-options:checked + .form__pseudo-item_type_checkbox{
@@ -39,6 +47,10 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+   }
+
+   .form__item_el_extra-options:checked + .form__pseudo-item_type_checkbox_type_black{
+    background-image: url(./images/checkboxBlack.png);
    }
   
   .form__item_el_extra-options:disabled + .form__pseudo-item_type_checkbox{

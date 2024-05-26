@@ -1,21 +1,17 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import './EventsGrid.css';
-import testImage from '../../images/TestPhoto.svg';
 import { Select } from '../../UI/Select/Select';
 import { EventCard } from '../EventCard/EventCard';
-import { CheckBox } from '../../UI/CheckBox/CheckBox';
 import { createEvent, getEvents } from '../../utils/EventsApi/EventsApi';
 import rectangle75 from './images/Rectangle75.svg';
 import { EventType } from '../../types/EventType';
-import { CheckBoxPlusMinus } from '../../UI/CheckBoxPlusMinus/CheckBoxPlusMinus';
 import { getCategory, getDescipline, getDesciplineById, getSubDescipline, getSubDesciplineById } from '../../utils/categoryApi/categoryApi';
 import { CheckboxFieldset } from '../CheckboxFieldset/CheckboxFieldset';
 import { getCity, getRegion } from '../../utils/RegionsApi/RegionsApi';
 import { RegionType } from '../../types/RegionType';
+import { UseFilter } from '../../app/hooks/UseFilter';
 
 export function EventsGrid() {
-
-  const  test = [1,2,3,4,5,6,7,8,9,10,11,12];
 
   const [ events, setEvents ] = useState<EventType | null>(null);
 
@@ -50,12 +46,19 @@ export function EventsGrid() {
 
   }, [])
 
+  const { changeRegion } = UseFilter();
+
+  useMemo(() => {
+    console.log(events);
+  }, [events])
+
+
   return (
     <section className="events-grid">
       <div className="events-grid__menu">
 
         {/* Сортировка событий */}
-        <Select defaultOption={'Выбрать регион'} options={regionList}/>
+        <Select defaultOption={'Выбрать регион'} options={regionList} onChange={changeRegion}/>
         <Select defaultOption={'Выбрать город'} options={cityList}/>
         <Select defaultOption={'Направление'} options={directions}/>
         <Select defaultOption={'Сначала популярные'} options={['Сначала новые']}/>
@@ -95,7 +98,7 @@ export function EventsGrid() {
       </div>
 
       {/* Сетка событий с блоком анимации   */}
-      <ul className="events-grid__list_type_animaton list-style">
+      {/* <ul className="events-grid__list_type_animaton list-style">
 
         <li className="events-grid__ivent">
             <img src={testImage} className="events-grid__image" />
@@ -112,7 +115,7 @@ export function EventsGrid() {
             <p className="events-grid__title">Открытие скейтпарка в Кемерово</p>
             <p className="events-grid__subtitle">15 июня, г. Кемерово</p>
         </li>
-      </ul>
+      </ul> */}
 
     </section>
   )
