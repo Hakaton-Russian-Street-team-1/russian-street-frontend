@@ -29,7 +29,6 @@ export function EventsGrid() {
 
     let desciplineRes = await getDescipline();
     const descipline = desciplineRes.map((item:any) => item.name);
-    console.log(descipline)
     setDirections(descipline);
 
     let subDiscipline = await getSubDescipline();
