@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Popupreg.css';
 import ClosePopupBtn from '../../images/closepopupbtn.svg';
 import { SuccessMessage } from './SuccessMessage';
+import { postRegister, UserAccount } from '../../utils/LogRegApi/LogRegapi';
 
 interface RegpopupProps {
   closePopup: () => void;
@@ -31,8 +32,8 @@ export function Regpopup({ closePopup, isOpen, openLoginPopup }: RegpopupProps) 
     agreement1: true,
     agreement2: true,
   });
-
   const [formErrors, setFormErrors] = useState<{ [key: string]: string }>({});
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
@@ -76,30 +77,21 @@ export function Regpopup({ closePopup, isOpen, openLoginPopup }: RegpopupProps) 
     setIsStep2Valid(false);
     setIsSubmitted(false);
     setShowSuccessMessage(false);
+    setIsLoading(false);
   };
 
   const validateField = (name: string, value: string | boolean) => {
     const errors: { [key: string]: string } = { ...formErrors };
     switch (name) {
       case 'surname':
-        if (!/^[А-Яа-яЁё]+$/.test(value as string)) {
-          errors.surname = 'Фамилия должна содержать только кириллические буквы';
-        } else {
-          delete errors.surname;
-        }
-        break;
       case 'name':
-        if (!/^[А-Яа-яЁё]+$/.test(value as string)) {
-          errors.name = 'Имя должно содержать только кириллические буквы';
-        } else {
-          delete errors.name;
-        }
-        break;
       case 'patronymic':
-        if ((value as string) && !/^[А-Яа-яЁё]+$/.test(value as string)) {
-          errors.patronymic = 'Отчество должно содержать только кириллические буквы';
+        if (!/^[А-Яа-яЁё]+$/.test(value as string)) {
+          errors[name] = `${name === 'surname' ? 'Фамилия' : name === 'name' ? 'Имя' : 'Отчество'} должно содержать только кириллические буквы`;
+        } else if ((value as string).length < 2) {
+          errors[name] = `${name === 'surname' ? 'Фамилия' : name === 'name' ? 'Имя' : 'Отчество'} должно быть не короче 2 символов`;
         } else {
-          delete errors.patronymic;
+          delete errors[name];
         }
         break;
       case 'phone':
@@ -217,18 +209,49 @@ export function Regpopup({ closePopup, isOpen, openLoginPopup }: RegpopupProps) 
     setCurrentStep(step);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     validateForm();
     if (isStep2Valid) {
-      setIsSubmitted(true);
-      setShowSuccessMessage(true);
-      closePopup();
+      const userData: UserAccount = {
+        email: formData.email,
+        first_name: formData.name,
+        last_name: formData.surname,
+        middle_name: formData.patronymic,
+        date_of_birth: formData.dob,
+        phone_number: formData.phone,
+        city: formData.city,
+        passport_series: formData.passport_series,
+        passport_number: formData.passport_number,
+        passport_issue_date: formData.issue_date,
+        passport_issued_by: formData.issued_by,
+        consent_to_rights: formData.agreement1,
+        consent_to_processing: formData.agreement2,
+      };
+
+      try {
+        setIsLoading(true);
+        const response = await postRegister(userData);
+        setIsLoading(false);
+        setIsSubmitted(true);
+        setShowSuccessMessage(true);
+        closePopup();
+      } catch (error) {
+        setIsLoading(false);
+        if (error instanceof Error) {
+          console.error('Детали ошибки:', error);
+          alert('Ошибка регистрации: ' + error.message);
+        } else {
+          alert('Ошибка регистрации: Произошла неизвестная ошибка');
+        }
+      }
+    } else {
+      alert('Пожалуйста, заполните все поля правильно.');
     }
   };
 
   const handleGovLogin = () => {
-    console.log('Login through government services');
+    console.log('Вход через Госуслуги');
   };
 
   if (!isOpen && !isSubmitted) return null;
@@ -238,7 +261,7 @@ export function Regpopup({ closePopup, isOpen, openLoginPopup }: RegpopupProps) 
       <div className={`Regpopup ${isOpen ? 'Regpopup_active' : ''}`}>
         <div className='Regpopup__content'>
           <button className='Regpopup__close' onClick={closePopup}>
-            <img src={ClosePopupBtn} alt='Close' />
+            <img src={ClosePopupBtn} alt='Закрыть' />
           </button>
           {!isSubmitted ? (
             <>
@@ -276,7 +299,7 @@ export function Regpopup({ closePopup, isOpen, openLoginPopup }: RegpopupProps) 
                       {formErrors.surname ? (
                         <span className='Regpopup__error'>{formErrors.surname}</span>
                       ) : (
-                        <span className='Regpopup__hint'>Только на кириллице</span>
+                        <span className='Regpopup__hint'>Только на кириллице, не короче 2 символов</span>
                       )}
                     </div>
                     <div className={`Regpopup__field Regpopup__field--small ${formErrors.name ? 'Regpopup__field--error' : ''}`}>
@@ -295,7 +318,7 @@ export function Regpopup({ closePopup, isOpen, openLoginPopup }: RegpopupProps) 
                       {formErrors.name ? (
                         <span className='Regpopup__error'>{formErrors.name}</span>
                       ) : (
-                        <span className='Regpopup__hint'>Только на кириллице</span>
+                        <span className='Regpopup__hint'>Только на кириллице, не короче 2 символов</span>
                       )}
                     </div>
                     <div className={`Regpopup__field Regpopup__field--medium ${formErrors.patronymic ? 'Regpopup__field--error' : ''}`}>
@@ -528,7 +551,7 @@ export function Regpopup({ closePopup, isOpen, openLoginPopup }: RegpopupProps) 
                     <div className='Regpopup__buttons'>
                       <button type='button' className='Regpopup__button Regpopup__button--gov' onClick={handleGovLogin}>ВОЙТИ ЧЕРЕЗ ГОСУСЛУГИ</button>
                       <button type='submit' className={`Regpopup__button ${isStep2Valid ? 'Regpopup__button--register' : 'Regpopup__button--disabled'}`} disabled={!isStep2Valid}>
-                        ЗАРЕГИСТРИРОВАТЬСЯ
+                        {isLoading ? 'Регистрация...' : 'ЗАРЕГИСТРИРОВАТЬСЯ'}
                       </button>
                     </div>
                   </div>
