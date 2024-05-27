@@ -5,22 +5,17 @@ import profilePhoto from '../../images/profile.svg';
 import CardEvent from '../../images/cardevent.png';
 import { getToken } from '../../utils/token';
 
-
 export const Personal: React.FC = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
         const token = getToken();
-        if (token) {
-            console.log('Токен авторизации:', token);
+        if (!token) {
+            navigate('/login');
         } else {
-            console.log('Токен не найден');
+            console.log('Токен авторизации:', token);
         }
-    }, []);
-
-    const handleCreateClick = () => {
-        navigate('/create-event-profile');
-    };
+    }, [navigate]);
 
     return (
         <div className='personal'>
@@ -60,7 +55,7 @@ export const Personal: React.FC = () => {
                 </div>
                 <div className='personal__buttons'>
                     <button className='personal__button-event'>Каталог мероприятий</button>
-                    <button className='personal__button-create' onClick={handleCreateClick}>Создать</button>
+                    <button className='personal__button-create' onClick={() => navigate('/create-event-profile')}>Создать</button>
                 </div>
                 <div className='personal__viewed-section'>
                     <h2 className='personal__viewed-title'>ВЫ СМОТРЕЛИ:</h2>
