@@ -1,3 +1,5 @@
+import { saveToken, getToken } from '../token';
+
 const baseUrl = 'https://streetsrussia.sytes.net/api/v1';
 
 interface AuthResponse {
@@ -36,6 +38,10 @@ export async function postLogin(username: string, password: string): Promise<Aut
 
     if (res.ok) {
       let data: AuthResponse = await res.json();
+      if (data.token) {
+        saveToken(data.token); // Сохраняем токен с использованием новой функции
+        console.log('Токен авторизации:', data.token); // Выводим токен в консоль
+      }
       return data;
     } else {
       let errorData: AuthResponse = await res.json();
@@ -49,6 +55,7 @@ export async function postLogin(username: string, password: string): Promise<Aut
 export async function postRegister(data: UserAccount): Promise<AuthResponse> {
   try {
     console.log("Отправка данных на сервер:", data);
+
     let res = await fetch(`${baseUrl}/auth/signup/`, {
       method: 'POST',
       headers: {
@@ -71,5 +78,43 @@ export async function postRegister(data: UserAccount): Promise<AuthResponse> {
   } catch (err) {
     console.error("Ошибка регистрации:", err);
     throw err instanceof Error ? err : new Error('Произошла ошибка');
+  }
+}
+
+// Функция для выполнения авторизованных запросов
+export async function authFetch(url: string, options: RequestInit = {}): Promise<Response> {
+  const token = getToken();
+  if (!token) {
+    throw new Error('Нет токена авторизации');
+  }
+
+  const headers = {
+    ...options.headers,
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`,
+  };
+
+  const authOptions = {
+    ...options,
+    headers,
+  };
+
+  return fetch(url, authOptions);
+}
+
+// Пример функции для авторизованных запросов
+export async function getUserData(): Promise<any> {
+  try {
+    let res = await authFetch(`${baseUrl}/user/data/`, {
+      method: 'GET',
+    });
+
+    if (res.ok) {
+      return await res.json();
+    } else {
+      throw new Error('Произошла ошибка при получении данных пользователя');
+    }
+  } catch (err) {
+    throw err;
   }
 }
