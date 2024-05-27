@@ -153,7 +153,7 @@ export function Regpopup({ closePopup, isOpen, openLoginPopup }: RegpopupProps) 
         break;
       case 'agreement1':
         if (!value) {
-          errors.agreement1 = 'Необходимо согласие с правами и обязанностями';
+          errors.agreement1 = 'Необходимо согласие с правами и обязанностями члена ООО УКС «Улицы России»';
         } else {
           delete errors.agreement1;
         }

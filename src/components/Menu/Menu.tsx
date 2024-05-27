@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Menu.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { menuProps } from './MenuProps';
-import { Popuplogin } from '../../components/PopupLogin/Popuplogin';
-import { isAuthenticated } from '../../utils/token'; // Импорт функции для проверки токена
 
-export function Menu({ toggleOpenMenu, type }: menuProps) {
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
+export function Menu({ toggleOpenMenu, openLoginPopup, type }: menuProps) {
   const navigate = useNavigate();
 
-  const handleTogglePopup = () => {
-    if (isAuthenticated()) {
-      navigate('/personal'); // перенаправляем в личный кабинет
+  const handleAvatarClick = () => {
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      navigate('/personal'); // Перенаправляем в личный кабинет
     } else {
-      setIsPopupOpen(!isPopupOpen); // открываем попап с логином
+      if (openLoginPopup) {
+        openLoginPopup(); // Открываем попап с логином
+      }
     }
   };
 
@@ -38,10 +38,8 @@ export function Menu({ toggleOpenMenu, type }: menuProps) {
           <Link to='/directions' className='menu__link' onClick={toggleOpenMenu}>Направления</Link>
           <Link to='/blog' className='menu__link' onClick={toggleOpenMenu}>Блог</Link>
           <Link to='/contacts' className='menu__link' onClick={toggleOpenMenu}>Контакты</Link>
-          <div className='menu__link menu__link_acc-logo' onClick={handleTogglePopup}>
-          </div>
+          <div className='menu__link menu__link_acc-logo' onClick={handleAvatarClick}></div>
         </nav>
-        <Popuplogin isOpen={isPopupOpen} closePopup={handleTogglePopup} />
       </>
     );
   }

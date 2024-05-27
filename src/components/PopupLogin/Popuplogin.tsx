@@ -27,6 +27,7 @@ export function Popuplogin({ closePopup, isOpen }: PopuploginProps) {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
+        console.log('Escape key pressed, closing popup');
         closePopup();
       }
     };
@@ -44,6 +45,7 @@ export function Popuplogin({ closePopup, isOpen }: PopuploginProps) {
 
   const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
+      console.log('Overlay clicked, closing popup');
       closePopup();
     }
   };
@@ -70,12 +72,15 @@ export function Popuplogin({ closePopup, isOpen }: PopuploginProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('Submitting login form');
     try {
       const result = await postLogin(username, password);
+      console.log('Login result:', result);
 
       if (result.token) {
-        closePopup();
-        navigate('/'); // Redirect to the home page
+        console.log('Login successful, token:', result.token);
+        closePopup(); // Закрываем попап
+        navigate('/personal'); // Перенаправляем на страницу профиля
       } else {
         setUsernameError(true);
         setPasswordError(true);
@@ -96,6 +101,10 @@ export function Popuplogin({ closePopup, isOpen }: PopuploginProps) {
   const closeRegPopup = () => {
     setIsRegPopupOpen(false);
   };
+
+  useEffect(() => {
+    console.log('Popuplogin rendered, isOpen:', isOpen);
+  }, [isOpen]);
 
   return (
     <>
@@ -147,7 +156,7 @@ export function Popuplogin({ closePopup, isOpen }: PopuploginProps) {
           </div>
         </div>
       </div>
-      <Regpopup isOpen={isRegPopupOpen} closePopup={closeRegPopup} openLoginPopup={closePopup} />
+      <Regpopup isOpen={isRegPopupOpen} closePopup={closeRegPopup} openLoginPopup={() => setIsRegPopupOpen(false)} />
     </>
   );
 }
