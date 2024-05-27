@@ -16,6 +16,8 @@ export function CurrentLocation() {
         location.pathname.includes('/blog') && setLocationName('Блог');
         location.pathname.includes('/contacts') && setLocationName('Контакты');
         location.pathname.includes('/SkateboardEventPage') && setLocationName('Соревнования по скейтбордингу');
+        location.pathname.includes('/personal') && setLocationName('Профиль');
+
     }, [location])
 
 
