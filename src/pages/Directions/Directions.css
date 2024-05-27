@@ -12,6 +12,7 @@
     width: 100vw;
     margin: 100px 0 100px;
     text-wrap: nowrap;
+    overflow: hidden;
 }
 
 .directions__runtext-span{
