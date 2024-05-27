@@ -1,5 +1,5 @@
 import React from 'react';
-import './CreateEventProfile.css';
+import './CreateeventProfile.css';
 import CardEvent from '../../images/cardevent.png';
 
 export function CreateEventProfile() {
