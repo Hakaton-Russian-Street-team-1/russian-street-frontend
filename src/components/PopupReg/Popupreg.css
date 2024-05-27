@@ -170,6 +170,7 @@
 .Regpopup__buttons {
   display: flex;
   gap: 20px;
+  width: 100%;
 }
 
 .Regpopup__button {
@@ -182,14 +183,19 @@
 }
 
 .Regpopup__button--gov {
-  color: #B73A34;
-  background-color: white;
-  border: 2px solid #B73A34;
-  padding: 17px 22px;
-  font-size: 20px;
-  line-height: 130%;
-  text-transform: uppercase;
-  cursor: pointer;
+  color: #040404;
+    background-color: white;
+    border: 2px solid #B73A34;
+    padding: 17px 22px;
+    font-size: 20px;
+    line-height: 130%;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    padding: 16px 32px 18px 32px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
 }
 
 .Regpopup__button--register {
@@ -283,3 +289,29 @@
   line-height: 130%; /* 16.9px */
   margin: 0;
 }
+
+/* Add to your existing CSS file */
+
+.Regpopup__steps {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.Regpopup__step {
+  color: #BEBDBC; /* Inactive color */
+  font-family: Bahnschrift;
+  font-size: 20px;
+  font-weight: 700;
+  width: 327px; /* Fixed width for each step */
+  text-align: center; /* Center align text */
+  padding-bottom: 5px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+.Regpopup__step.active {
+  color: #B73A34; /* Active color */
+  border-bottom: 2px solid #B73A34; /* Active bottom border color */
+}
+
