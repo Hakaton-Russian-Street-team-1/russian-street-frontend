@@ -243,18 +243,18 @@ export function Regpopup({ closePopup, isOpen, openLoginPopup }: RegpopupProps) 
           {!isSubmitted ? (
             <>
               <div className='Regpopup__steps'>
-                <button
+                <span
                   className={`Regpopup__step ${currentStep === 1 ? 'active' : ''}`}
                   onClick={() => handleStepClick(1)}
                 >
                   Шаг 1
-                </button>
-                <button
+                </span>
+                <span
                   className={`Regpopup__step ${currentStep === 2 ? 'active' : ''}`}
                   onClick={() => handleStepClick(2)}
                 >
                   Шаг 2
-                </button>
+                </span>
               </div>
               <h2 className='Regpopup__title'>{currentStep === 1 ? 'Контактные данные*' : 'Паспортные данные*'}</h2>
               <form className='Regpopup__form' onSubmit={handleSubmit}>
