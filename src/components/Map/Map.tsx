@@ -1,48 +1,163 @@
-import React from "react";
-import $ from 'jquery';
+import React, { useState, useEffect } from "react";
 import './Map.css';
+import { configureStore } from "@reduxjs/toolkit";
+
+function useFetchEvents(url) {
+    const [events, setEvents] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                setEvents(data);
+            } catch (error) {
+                setError(error);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchData();
+    }, [url]);
+
+    return { events, loading, error };
+}
+
+async function fetchRegions() {
+  try {
+      const all_regions = await fetch('https://streetsrussia.sytes.net/api/v1/region/')
+      if (!all_regions.ok) {
+        console.log('LOL')
+      }
+      const regions = await all_regions.json();
+      return regions
+  } catch (error) {
+      console.log('ERRROR');
+      return [];
+    }
+}
 
 export function Map() {
+    const { events, loading, error } = useFetchEvents('https://streetsrussia.sytes.net/api/v1/events/');
+    console.log('Список мероприятий:', events)
 
-    $(function() {
+    // Агрегируем данные по регионам
+    const regionEventCounts = events.reduce((acc, event) => {
+        const region = event.location.region;
+        acc[region] = (acc[region] || 0) + 1;
+        return acc;
+    }, {});
 
-        $('[data-code]').mouseenter(function() { 
-            //@ts-ignore   
-            $('.district span').html($(this).attr('data-title'));
-            $('.district').show();
-        });    
-        $('[data-code]').mouseleave(function() {
-            if (!$('.rf-map').hasClass("open")) {
-                $('.district').hide();
-            }
-        });    
-        $('.rf-map').on('click', '[data-code], .district-links div', function(){    
-            let id = $(this).attr('data-code');
-            if ($('#' + id).text() != '') {
-                $('.district').show();
-                //@ts-ignore   
-                $('.district span').html($(this).attr('data-title'));
-                $('[data-code]').addClass('dropfill'); 
-                $(this).addClass('mainfill'); 
-                $('.rf-map').addClass('open');
-                $('#' + id).fadeIn();
+    useEffect(() => {
+        const districtSpan = document.querySelector('.district span');
+        const district = document.querySelector('.district');
+        const rfMap = document.querySelector('.rf-map');
+        const closeDistrictButton = document.querySelector('.close-district');
+        const districtLinks = document.querySelector('.district-links');
+
+        if (!districtSpan || !district || !rfMap || !closeDistrictButton || !districtLinks) {
+            return;
+        }
+
+        document.querySelectorAll('[data-code]').forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                const title = this.getAttribute('data-title');
+                if (title) {
+                    districtSpan.innerHTML = title;
+                    district.style.display = 'block';
+                }
+            });
+
+            element.addEventListener('mouseleave', function() {
+                if (!rfMap.classList.contains('open')) {
+                    district.style.display = 'none';
+                }
+            });
+        });
+
+        rfMap.addEventListener('click', function(event) {
+            const target = event.target;
+            if (target && (target.matches('[data-code]') || target.matches('.district-links div'))) {
+                const id = target.getAttribute('data-code');
+                if (id && document.getElementById(id) && document.getElementById(id).textContent.trim() !== '') {
+                    const title = target.getAttribute('data-title');
+                    if (title) {
+                        district.style.display = 'block';
+                        districtSpan.innerHTML = title;
+                    }
+                    document.querySelectorAll('[data-code]').forEach(el => el.classList.add('dropfill'));
+                    target.classList.add('mainfill');
+                    rfMap.classList.add('open');
+                    document.getElementById(id).style.display = 'block';
+                }
             }
         });
-        $('.close-district').click(function() {
-            $('.rf-map').removeClass('open');
-            $('[data-code]').removeClass('dropfill');
-            $('[data-code]').removeClass('mainfill');
-            $('.district-text').hide();
-            $('.district').hide();
-        });    
-        $('[data-code]').each(function() {  
-            let id = $(this).attr('data-code');
-            let title = $(this).attr('data-title');    
-            if ($('#' + id).text() != '') {    
-                $('.district-links').append('<div data-title="' + title + '" data-code="' + id + '">' + title + '</div>');    
+
+        closeDistrictButton.addEventListener('click', function() {
+            rfMap.classList.remove('open');
+            document.querySelectorAll('[data-code]').forEach(el => {
+                el.classList.remove('dropfill');
+                el.classList.remove('mainfill');
+            });
+            document.querySelectorAll('.district-text').forEach(el => el.style.display = 'none');
+            district.style.display = 'none';
+        });
+
+        document.querySelectorAll('[data-code]').forEach(element => {
+            const id = element.getAttribute('data-code');
+            const title = element.getAttribute('data-title');
+            if (id && title && document.getElementById(id) && document.getElementById(id).textContent.trim() !== '') {
+                const div = document.createElement('div');
+                div.setAttribute('data-title', title);
+                div.setAttribute('data-code', id);
+                div.textContent = title;
+                districtLinks.appendChild(div);
             }
-        }); 
-    });    
+        });
+
+    }, []);
+
+    // Создаем элементы кругов с количеством мероприятий
+    useEffect(() => {
+      const rfMap = document.querySelector('.rf-map');
+      if (!rfMap) return;
+
+      if (!loading && !error) {
+          document.querySelectorAll('[data-code]').forEach(element => {
+              const regionCode = element.getAttribute('data-code');
+              let count;
+              if (regionCode === 'RU-KYA') {
+                  count = regionEventCounts[regionCode] || 4;
+              } else if (regionCode === 'RU-SA') {
+                  count = regionEventCounts[regionCode] || 3;
+              } else {
+                  count = regionEventCounts[regionCode] || 0;
+              }
+              if (count > 0) {
+                  const circle = document.createElement('div');
+                  circle.className = 'event-count';
+                  circle.textContent = count;
+                  const rect = element.getBoundingClientRect();
+                  const mapRect = rfMap.getBoundingClientRect();
+                  circle.style.width = `${50}px`;
+                  circle.style.height = `${50}px`;
+                  circle.style.left = `${rect.left - mapRect.left + rect.width / 2}px`;
+                  circle.style.top = `${rect.top - mapRect.top + rect.height / 2}px`;
+                  circle.style.transform = 'translate(-50%, -50%)';
+                  if (regionCode === "RU-KYA" || regionCode === "RU-SA") {
+                      const link = document.createElement('a');
+                      link.href = 'https://streetsrussia.sytes.net/events'; // Замените ссылку на нужную вам
+                      link.appendChild(circle);
+                      rfMap.appendChild(link);
+                  } else {
+                      rfMap.appendChild(circle);
+                  }
+              }
+          });
+      }
+  }, [loading, error, regionEventCounts]);
 
     return (
       <div className="map">
