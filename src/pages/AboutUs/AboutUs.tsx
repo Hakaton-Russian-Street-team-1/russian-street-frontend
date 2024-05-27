@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import './AboutUs.css';
 import { Select } from '../../UI/Select/Select';
 import { EventCard } from '../../components/EventCard/EventCard';
 import { fondP, assk, rosm, skfu, potanFond, ofb, 
   tdom, workout, proriv, mirtrud, img, rectangle60,
   frame885, image309, innumber, partner, tbtarrow } from './imports';
+import { getPartners } from '../../utils/partnersApi/partnersApi';
+import { PartnersType } from '../../types/PartnersType';
 
 export function AboutUs() {
 
-  const  test = [1,2,3,4];
+  const [ partners, setPartners ] = useState<PartnersType | null>(null);
+
+  useMemo(async() => {
+    let res = await getPartners();
+    setPartners(res);
+    console.log(res);
+  }, [])
 
   return (<section className='about-us'>
 
@@ -72,52 +80,35 @@ export function AboutUs() {
           <div className='partners__column'>
             <h6 className='partners__title'>Генеральные партнёры</h6>
 
-            <div className='partners__partner'>
-              <img src={fondP} className='partners__partner-image'/>
+            { 
+              // @ts-ignore
+              partners?.filter(partner => partner.type === 'GENERAL').map(item => <div className='partners__partner' key={item.id}>
+              <img src={item.image} className='partners__partner-image'/>
               <div className='partners__about-partner'>
                 <div className='partners__textarea'>
-                  <p className='partners__about-partner-text'>Фонд президентских грантов является единым оператором государственной поддержки некоммерческих неправительственных организаций в Российской Федерации с 3 апреля 2017 года</p>
-                  <p className='partners__about-partner-text'>Совместные проекты: скейдборд соревнования “МЫ”, конкурс паркура “ДОСКА” </p>
+                  <p className='partners__about-partner-text'>{item.description}</p>
+                  {/* <p className='partners__about-partner-text'>Совместные проекты: скейдборд соревнования “МЫ”, конкурс паркура “ДОСКА” </p> */}
                 </div>
               </div>
-            </div>
-
-            
-            <div className='partners__partner'>
-              <img src={rosm} className='partners__partner-image'/>
-              <div className='partners__about-partner'>
-                <div className='partners__textarea'>
-                  <p className='partners__about-partner-text'>Фонд президентских грантов является единым оператором государственной поддержки некоммерческих неправительственных организаций в Российской Федерации с 3 апреля 2017 года</p>
-                  <p className='partners__about-partner-text'>Совместные проекты: скейдборд соревнования “МЫ”, конкурс паркура “ДОСКА” </p>
-                </div>
-              </div>
-            </div>       
-
+            </div>)
+            }
           </div>
 
           <div className='partners__column'>
             <h6 className='partners__title'>Стратегические партнёры</h6>
 
-            <div className='partners__partner'>
-              <img src={assk} className='partners__partner-image'/>
+            { 
+              // @ts-ignore
+              partners?.filter(partner => partner.type === 'STRATEGIC').map(item => <div className='partners__partner' key={item.id}>
+              <img src={item.image} className='partners__partner-image'/>
               <div className='partners__about-partner'>
                 <div className='partners__textarea'>
-                  <p className='partners__about-partner-text'>Фонд президентских грантов является единым оператором государственной поддержки некоммерческих неправительственных организаций в Российской Федерации с 3 апреля 2017 года</p>
-                  <p className='partners__about-partner-text'>Совместные проекты: скейдборд соревнования “МЫ”, конкурс паркура “ДОСКА” </p>
+                  <p className='partners__about-partner-text'>{item.description}</p>
+                  {/* <p className='partners__about-partner-text'>Совместные проекты: скейдборд соревнования “МЫ”, конкурс паркура “ДОСКА” </p> */}
                 </div>
               </div>
-            </div>
-
-
-            <div className='partners__partner'>
-              <img src={skfu} className='partners__partner-image'/>
-              <div className='partners__about-partner'>
-                <div className='partners__textarea'>
-                  <p className='partners__about-partner-text'>Фонд президентских грантов является единым оператором государственной поддержки некоммерческих неправительственных организаций в Российской Федерации с 3 апреля 2017 года</p>
-                  <p className='partners__about-partner-text'>Совместные проекты: скейдборд соревнования “МЫ”, конкурс паркура “ДОСКА” </p>
-                </div>
-              </div>
-            </div>
+            </div>)
+            }
 
           </div>
       </div>
@@ -125,77 +116,40 @@ export function AboutUs() {
       <div className='partners__table'>
         <div className='partners__column'>
           <h6 className='partners__title'>Организационные партнёры</h6>
-          <div className='partners__partner'>
-
-              <img src={potanFond} className='partners__partner-image'/>
+          
+          { 
+              // @ts-ignore
+              partners?.filter(partner => partner.type === 'ORGANIZATIONAL').map(item => <div className='partners__partner' key={item.id}>
+              <img src={item.image} className='partners__partner-image'/>
               <div className='partners__about-partner'>
                 <div className='partners__textarea'>
-                  <p className='partners__about-partner-text'>Фонд президентских грантов является единым оператором государственной поддержки некоммерческих неправительственных организаций в Российской Федерации с 3 апреля 2017 года</p>
-                  <p className='partners__about-partner-text'>Совместные проекты: скейдборд соревнования “МЫ”, конкурс паркура “ДОСКА” </p>
+                  <p className='partners__about-partner-text'>{item.description}</p>
+                  {/* <p className='partners__about-partner-text'>Совместные проекты: скейдборд соревнования “МЫ”, конкурс паркура “ДОСКА” </p> */}
                 </div>
               </div>
-            </div>
-
-            <div className='partners__partner'>
-              <img src={tdom} className='partners__partner-image'/>
-              <div className='partners__about-partner'>
-                <div className='partners__textarea'>
-                  <p className='partners__about-partner-text'>Фонд президентских грантов является единым оператором государственной поддержки некоммерческих неправительственных организаций в Российской Федерации с 3 апреля 2017 года</p>
-                  <p className='partners__about-partner-text'>Совместные проекты: скейдборд соревнования “МЫ”, конкурс паркура “ДОСКА” </p>
-                </div>
-              </div>
-            </div>
-
-            <div className='partners__partner'>
-              <img src={proriv} className='partners__partner-image'/>
-              <div className='partners__about-partner'>
-                <div className='partners__textarea'>
-                  <p className='partners__about-partner-text'>Фонд президентских грантов является единым оператором государственной поддержки некоммерческих неправительственных организаций в Российской Федерации с 3 апреля 2017 года</p>
-                  <p className='partners__about-partner-text'>Совместные проекты: скейдборд соревнования “МЫ”, конкурс паркура “ДОСКА” </p>
-                </div>
-              </div>
-            </div>
+            </div>)
+            }
             
         </div>
 
         <div className='partners__column'>
-          <h6 className='partners__title'>Организационные партнёры</h6>
-          <div className='partners__partner'>
-              <img src={ofb} className='partners__partner-image'/>
+          <h6 className='partners__title'>Региональные партнёры</h6>
+          
+          { 
+              // @ts-ignore
+              partners?.filter(partner => partner.type === 'REGIONAL').map(item => <div className='partners__partner' key={item.id}>
+              <img src={item.image} className='partners__partner-image'/>
               <div className='partners__about-partner'>
                 <div className='partners__textarea'>
-                  <p className='partners__about-partner-text'>Фонд президентских грантов является единым оператором государственной поддержки некоммерческих неправительственных организаций в Российской Федерации с 3 апреля 2017 года</p>
-                  <p className='partners__about-partner-text'>Совместные проекты: скейдборд соревнования “МЫ”, конкурс паркура “ДОСКА” </p>
+                  <p className='partners__about-partner-text'>{item.description}</p>
+                  {/* <p className='partners__about-partner-text'>Совместные проекты: скейдборд соревнования “МЫ”, конкурс паркура “ДОСКА” </p> */}
                 </div>
               </div>
-          </div>
-
-          <div className='partners__partner'>
-              <img src={workout} className='partners__partner-image'/>
-              <div className='partners__about-partner'>
-                <div className='partners__textarea'>
-                  <p className='partners__about-partner-text'>Фонд президентских грантов является единым оператором государственной поддержки некоммерческих неправительственных организаций в Российской Федерации с 3 апреля 2017 года</p>
-                  <p className='partners__about-partner-text'>Совместные проекты: скейдборд соревнования “МЫ”, конкурс паркура “ДОСКА” </p>
-                </div>
-              </div>
-          </div>
-
-          <div className='partners__partner'>
-              <img src={rosm} className='partners__partner-image'/>
-              <div className='partners__about-partner'>
-                <div className='partners__textarea'>
-                  <p className='partners__about-partner-text'>Фонд президентских грантов является единым оператором государственной поддержки некоммерческих неправительственных организаций в Российской Федерации с 3 апреля 2017 года</p>
-                  <p className='partners__about-partner-text'>Совместные проекты: скейдборд соревнования “МЫ”, конкурс паркура “ДОСКА” </p>
-                </div>
-              </div>
-          </div>
+            </div>)
+            }
 
         </div>
       </div>
-
-
-
-
 
       <h3 className='about-us__title'>Новости</h3>
 

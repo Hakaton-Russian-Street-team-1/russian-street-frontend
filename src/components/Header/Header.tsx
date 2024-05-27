@@ -39,8 +39,10 @@ export function Header() {
 
   return (<>
     <header className='header'>
-      <img className='header__logo' src={logo}/>
-      { screenWidth > 768 ? <Menu /> : <MobileMenu isOpen={openMenu} toggleOpenMenu={toggleOpenMenu} />}
+      <div className='header__content'>
+        <img className='header__logo' src={logo}/>
+        { screenWidth > 768 ? <Menu /> : <MobileMenu isOpen={openMenu} toggleOpenMenu={toggleOpenMenu} />}
+      </div>
     </header>
   </>
   

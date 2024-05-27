@@ -9,6 +9,5 @@ export function Events() {
         <Slider />
         <EventsCalendar />
       </section>
-    
   );
 }

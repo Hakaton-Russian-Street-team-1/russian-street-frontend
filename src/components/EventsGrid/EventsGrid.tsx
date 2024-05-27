@@ -48,9 +48,23 @@ export function EventsGrid() {
 
   const { changeRegion } = UseFilter();
 
-  useMemo(() => {
-    console.log(events);
-  }, [events])
+//   async function getFilterEvent() {
+// const baseUrl = 'https://streetsrussia.sytes.net/api/v1'
+//     let res = await fetch(`${baseUrl}/events/?location.id=1`, {
+//       method: 'GET'
+//   });
+//   if(res.ok){
+//       let data = await res.json();
+//       return data;
+//   } else {
+//       throw new Error('Произошла ошибка');
+//   }
+//   }
+
+//   useMemo(async() => {
+//     let res = await getFilterEvent()
+//     console.log(res);
+//   }, [])
 
 
   return (
@@ -58,7 +72,7 @@ export function EventsGrid() {
       <div className="events-grid__menu">
 
         {/* Сортировка событий */}
-        <Select defaultOption={'Выбрать регион'} options={regionList} onChange={changeRegion}/>
+        <Select defaultOption={'Выбрать регион'} options={regionList}/>
         <Select defaultOption={'Выбрать город'} options={cityList}/>
         <Select defaultOption={'Направление'} options={directions}/>
         <Select defaultOption={'Сначала популярные'} options={['Сначала новые']}/>
