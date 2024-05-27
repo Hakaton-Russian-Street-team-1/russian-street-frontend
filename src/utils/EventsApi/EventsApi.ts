@@ -42,3 +42,21 @@ export async function createEvent () {
     let data = res.json();
     return data;
 }
+
+export async function getEventsByRegion (id:number) {
+    try{
+        let res = await fetch(`${baseUrl}/events/?location__region=${id}`, {
+            method: 'GET'
+        });
+        if(res.ok){
+            let data = await res.json();
+            return data;
+        } else {
+            throw new Error('Произошла ошибка');
+        }
+    }
+    catch(err){
+        console.error(err);
+    }
+
+}

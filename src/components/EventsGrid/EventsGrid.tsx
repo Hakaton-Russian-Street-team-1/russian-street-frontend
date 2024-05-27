@@ -10,10 +10,10 @@ import { CheckboxFieldset } from '../CheckboxFieldset/CheckboxFieldset';
 import { getCity, getRegion } from '../../utils/RegionsApi/RegionsApi';
 import { RegionType } from '../../types/RegionType';
 import { UseFilter } from '../../app/hooks/UseFilter';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { getEventsAsync } from '../../store/Events/EventsSlice';
 
 export function EventsGrid() {
-
-  const [ events, setEvents ] = useState<EventType | null>(null);
 
   const [ disciplineId, setDisciplineId ] = useState<number[] | null>(null);
   const [ subDiscipline, setSubDiscipline ] = useState(null);
@@ -21,7 +21,12 @@ export function EventsGrid() {
   const [ cityList, setCityList ] = useState<string[] | null>(null)
   const [directions, setDirections] = useState<string[] | null>(null);
 
+  const events = useAppSelector(state => state.events.value);
+  const dispatch = useAppDispatch();
+
   useMemo(async() => {
+    // подгружаем события
+    dispatch(getEventsAsync());
 
     let desciplineRes = await getDescipline();
     const descipline = desciplineRes.map((item:any) => item.name);
@@ -31,10 +36,6 @@ export function EventsGrid() {
     setSubDiscipline(subDiscipline);
     let idArray = desciplineRes.map((item:{id:number}) => item.id);
     setDisciplineId(idArray);
-
-
-    let events = await getEvents();
-    setEvents(events);
 
     let regionsRes = await getRegion();
     const regions = regionsRes.map((item:RegionType) => item.name);
