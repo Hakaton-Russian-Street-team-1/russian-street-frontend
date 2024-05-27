@@ -16,12 +16,39 @@
     height: 100px;
 }
 
-.personal__sidebar-text,
-.personal__sidebar-link {
-    margin: 10px 0;
-    text-align: center;
-    color: white;
+.personal__sidebar-text{
+    color: var(--white, #FFF);
+    /* body medium */
+    font-family: Bahnschrift;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
     text-decoration: none;
+    margin: 0;
+    margin-bottom: 40px;
+}
+
+
+.personal__sidebar-link {
+    color: var(--white, #FFF);
+    font-family: Bahnschrift;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    text-decoration: none;
+    gap: 16px;
+    /* margin-top: 40px; */
+    /* flex-direction: column; */
+    /* display: flex; */
+    margin-top: 16px;
+
+}
+
+.personal__sidebar-link:first-of-type{
+    margin-top: 0;
+
 }
 
 .personal__content {
@@ -44,8 +71,15 @@
     margin-left: 10px;
     height: 60px;
     width: 285px;
-    margin-top: 11px;
+    margin-top: 15px;
     padding: 0 5px 0 14px;
+    background: var(--grey, #D2D1D0);
+    color: black;
+    text-transform: uppercase;
+    background-image: url(../../images/chevrondowngrey.svg);
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 24px 24px;
 }
 
 .personal__cards {
@@ -70,6 +104,22 @@
 
 .personal__card-text {
     margin: 5px 0 0 0;
+    color: var(--white, #FFF);
+font-family: Bahnschrift;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: 130%; /* 26px */
+}
+
+.personal__card-textsmall{
+    margin: 0;
+    color: var(--grey, #D2D1D0);
+font-family: Bahnschrift;
+font-size: 13px;
+font-style: normal;
+font-weight: 700;
+line-height: 130%; /* 16.9px */
 }
 
 .personal__buttons {
@@ -79,7 +129,7 @@
     gap: 20px;
     align-items: ledt;
     align-content: left;
-    margin-top: 40px;
+    margin-top: 83px;
     align-self: baseline;
 }
 

@@ -1,19 +1,18 @@
 import React from 'react';
 import './App.css';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Header, Footer } from '../components/Components';
-import { AboutUs, Contacts, Directions, Events, Blog, Main, Event, NotFoundPage, Blogevent, Personal } from '../pages/pages';
+import { AboutUs, Contacts, Directions, Events, Blog, Main, Event, NotFoundPage, Blogevent, Personal, CreateEventProfile } from '../pages/pages';
 import { PopupParty } from '../components/PopupForParty/PopupforParty';
 import { CurrentLocation } from '../components/CurrentLocation/CurrentLocation';
-
 
 function App() {
   return (
     <div className='page'>
       <Header />
       <div className='content'>
-      <CurrentLocation />
-      <Routes>
+        <CurrentLocation />
+        <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/events' element={<Events />} />
           <Route path='/directions' element={<Directions />} />
@@ -24,7 +23,8 @@ function App() {
           <Route path='/blog/:id' element={<Blogevent />} />
           <Route path='/*' element={<NotFoundPage />} />
           <Route path='/personal' element={<Personal />} />
-      </Routes>
+          <Route path='/create-event-profile' element={<CreateEventProfile />} />
+        </Routes>
       </div>
       <Footer />
     </div>

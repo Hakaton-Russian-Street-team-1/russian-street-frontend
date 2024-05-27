@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Personalacc.css';
 import profilePhoto from '../../images/profile.svg';
 import CardEvent from '../../images/cardevent.png';
 import { getToken } from '../../utils/token';
 
+
 export const Personal: React.FC = () => {
+    const navigate = useNavigate();
+
     useEffect(() => {
         const token = getToken();
         if (token) {
@@ -13,6 +17,10 @@ export const Personal: React.FC = () => {
             console.log('Токен не найден');
         }
     }, []);
+
+    const handleCreateClick = () => {
+        navigate('/create-event-profile');
+    };
 
     return (
         <div className='personal'>
@@ -23,6 +31,7 @@ export const Personal: React.FC = () => {
                 <a href="#event-history" className="personal__sidebar-link">История мероприятий</a>
                 <a href="#settings" className="personal__sidebar-link">Настройки</a>
                 <a href="#support" className="personal__sidebar-link">Служба поддержки</a>
+                <a href="#support" className="personal__sidebar-link">Выйти</a>
             </div>
             <div className='personal__content'>
                 <div className='personal__header'>
@@ -36,22 +45,22 @@ export const Personal: React.FC = () => {
                     <div className='personal__card'>
                         <img src={CardEvent} alt="event" />
                         <p className='personal__card-text'>Открытие скейпарка в Кемерово</p>
-                        <p className='personal__card-text'>15 июня, г. Кемерово</p>
+                        <p className='personal__card-textsmall'>15 июня, г. Кемерово</p>
                     </div>
                     <div className='personal__card'>
                         <img src={CardEvent} alt="event" />
                         <p className='personal__card-text'>Открытие скейпарка в Кемерово</p>
-                        <p className='personal__card-text'>15 июня, г. Кемерово</p>
+                        <p className='personal__card-textsmall'>15 июня, г. Кемерово</p>
                     </div>
                     <div className='personal__card'>
                         <img src={CardEvent} alt="event" />
                         <p className='personal__card-text'>Открытие скейпарка в Кемерово</p>
-                        <p className='personal__card-text'>15 июня, г. Кемерово</p>
+                        <p className='personal__card-textsmall'>15 июня, г. Кемерово</p>
                     </div>
                 </div>
                 <div className='personal__buttons'>
                     <button className='personal__button-event'>Каталог мероприятий</button>
-                    <button className='personal__button-create'>Создать</button>
+                    <button className='personal__button-create' onClick={handleCreateClick}>Создать</button>
                 </div>
                 <div className='personal__viewed-section'>
                     <h2 className='personal__viewed-title'>ВЫ СМОТРЕЛИ:</h2>
@@ -59,22 +68,22 @@ export const Personal: React.FC = () => {
                         <div className='personal__card'>
                             <img src={CardEvent} alt="event" />
                             <p className='personal__card-text'>Открытие скейпарка в Кемерово</p>
-                            <p className='personal__card-text'>15 июня, г. Кемерово</p>
+                            <p className='personal__card-textsmall'>15 июня, г. Кемерово</p>
                         </div>
                         <div className='personal__card'>
                             <img src={CardEvent} alt="event" />
                             <p className='personal__card-text'>Открытие скейпарка в Кемерово</p>
-                            <p className='personal__card-text'>15 июня, г. Кемерово</p>
+                            <p className='personal__card-textsmall'>15 июня, г. Кемерово</p>
                         </div>
                         <div className='personal__card'>
                             <img src={CardEvent} alt="event" />
                             <p className='personal__card-text'>Открытие скейпарка в Кемерово</p>
-                            <p className='personal__card-text'>15 июня, г. Кемерово</p>
+                            <p className='personal__card-textsmall'>15 июня, г. Кемерово</p>
                         </div>
                         <div className='personal__card'>
                             <img src={CardEvent} alt="event" />
                             <p className='personal__card-text'>Открытие скейпарка в Кемерово</p>
-                            <p className='personal__card-text'>15 июня, г. Кемерово</p>
+                            <p className='personal__card-textsmall'>15 июня, г. Кемерово</p>
                         </div>
                     </div>
                 </div>
