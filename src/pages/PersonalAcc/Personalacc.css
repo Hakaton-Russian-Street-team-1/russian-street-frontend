@@ -1,0 +1,127 @@
+.personal {
+    display: flex;
+    color: white;
+}
+
+.personal__sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+}
+
+.personal__profile-photo {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.personal__sidebar-text,
+.personal__sidebar-link {
+    margin: 10px 0;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+}
+
+.personal__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(100% - 240px);
+    padding: 20px;
+    margin-top: -110px;
+}
+
+.personal__header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.personal__header-select {
+    margin-left: 10px;
+    height: 60px;
+    width: 285px;
+    margin-top: 11px;
+    padding: 0 5px 0 14px;
+}
+
+.personal__cards {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px; /* Add margin-bottom to create space between cards and buttons */
+}
+
+.personal__card {
+    width: 286px;
+    height: 389px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.personal__card img {
+    width: 100%;
+    height: auto;
+}
+
+.personal__card-text {
+    margin: 5px 0 0 0;
+}
+
+.personal__buttons {
+    display: flex;
+    /* width: 100%; */
+    /* margin: 14px 10px 10px -176px; */
+    gap: 20px;
+    align-items: ledt;
+    align-content: left;
+    margin-top: 40px;
+    align-self: baseline;
+}
+
+.personal__button-event {
+    color: var(--white, #FFF);
+    font-family: Bahnschrift;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%; /* 26px */
+    text-transform: uppercase;
+    border: 3px solid var(--red, #B73A34);
+    padding: 16px 32px 18px 32px;
+    background: none;
+    cursor: pointer;
+}
+
+.personal__button-create {
+    color: var(--white, #FFF);
+    font-family: Bahnschrift;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%; /* 26px */
+    text-transform: uppercase;
+    padding: 16px 32px 18px 32px;
+    background-color: var(--red, #B73A34);
+    cursor: pointer;
+    border: none; /* No border for create button */
+}
+
+
+.personal__viewed-section {
+    width: 100%;
+}
+
+.personal__viewed-title {
+    margin: 20px 0;
+}
+
+.personal__viewed-cards {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}

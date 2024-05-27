@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import './Menu.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { menuProps } from './MenuProps';
 import { Popuplogin } from '../../components/PopupLogin/Popuplogin';
+import { isAuthenticated } from '../../utils/token'; // Импорт функции для проверки токена
 
 export function Menu({ toggleOpenMenu, type }: menuProps) {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleTogglePopup = () => {
-    setIsPopupOpen(!isPopupOpen);
+    if (isAuthenticated()) {
+      navigate('/personal'); // перенаправляем в личный кабинет
+    } else {
+      setIsPopupOpen(!isPopupOpen); // открываем попап с логином
+    }
   };
 
   if (type === 'footer') {
