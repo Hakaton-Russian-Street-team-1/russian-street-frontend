@@ -18,7 +18,16 @@ export function CurrentLocation() {
         location.pathname.includes('/SkateboardEventPage') && setLocationName('Соревнования по скейтбордингу');
     }, [location])
 
-  return (<div className='current-location'>
-   <p className='current-location__text'>{`Главная / ${locationName}`}</p>
-  </div>)
+
+  if(location.pathname === '/') {
+    return (
+      <>
+      </>
+    )
+  } else {
+    return (
+    <div className='current-location'>
+      <p className='current-location__text'>{`Главная / ${locationName}`}</p>
+    </div>)
+  }
 }

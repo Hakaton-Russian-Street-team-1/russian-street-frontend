@@ -13,17 +13,20 @@
 
 .about-us__join{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    position: relative;  
+    grid-template-columns: 1fr 2fr;
+    /* position: relative;  
     left: 50%;
     transform: translateX(-50%);
-    width: calc(100vw - 22px);
+    width: calc(100vw - 22px); */
     margin: 0 0 120px;
 }
 
-.about-us__column:nth-of-type(1){
-    padding-left: 10%;
-    background-color: #D9D9D9;
+
+.about-us__column-arrows{
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    margin: 76px 0 0;
 }
 
 .about-us__column-title{
@@ -33,6 +36,8 @@
     line-height: 130%;
     text-transform: uppercase;
     max-width: 367px;
+    margin: 40px 0 40px;
+    
 }
 
 .about-us__image{
@@ -61,6 +66,7 @@
 .about-us__values{
     display: flex;
     gap: 20px;
+    margin: 0 0 140px;
 }
 
 .about-us__values-column{
@@ -70,7 +76,6 @@
 }
 
 .about-us__values-text{
-    background-color: #D2D1D0;
     padding: 16px 32px 18px;
     max-width: 427px;
     font-size: 20px;
@@ -80,13 +85,14 @@
 
 .about-us__team{
     align-content: space-between;
-    background-color: #D2D1D0;
+    background-color: #1E5B9C;
     position: relative;  
     left: 50%;
     transform: translateX(-50%);
     width: calc(100vw - 22px);
     margin: 0 0 120px;
-    height: 761px;
+    max-height: 641px;
+    box-sizing: border-box;
 }
 
 .about-us__members-list{
@@ -95,6 +101,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
+    box-sizing: border-box;
 }
 
 .about-us__member{
@@ -103,6 +110,7 @@
     color: white;
     font-size: 13px;
     line-height: 130%;
+    box-sizing: border-box;
 }
 
 .about-us__member_current{
@@ -113,6 +121,11 @@
     display: flex;
     justify-content: space-between;
     margin: 41px 0 0;
+    box-sizing: border-box;
+}
+
+.about-us__facts{
+    margin: 0 0 120px;
 }
 
 .about-us__about-column{
@@ -120,7 +133,7 @@
 }
 
 .about-us__member-name{
-    color: #222;
+    color: white;
     /* font-family: Benzin-Medium; */
     font-size: 60px;
     line-height: 130%;
@@ -131,10 +144,11 @@
 
 .about-us__about-member{
     max-width: 550px;
+    margin: 0 0 120px;
 }
 
 .about-us__member-photo{
-    margin-top: 69px;
+    margin: 0 109px 0 0;
 }
 
 .partners__table{
@@ -164,6 +178,8 @@
 .partners__partner-image{
     display: block;
     width: 100%;
+    padding: 11px;
+    box-sizing: border-box;
 }
 
 .partners__about-partner{
@@ -173,6 +189,7 @@
     transition: 250ms grid-template-rows ease;
     margin: 0;
     background-color: #D2D1D0;
+    background-color: transparent;
 }
 
 .partners__partner:hover .partners__about-partner{

@@ -9,7 +9,8 @@
     height: 350px;
     background-image: url(./images/neyro.svg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100vw;
+    background-position: center;
     width: calc(100vw - 35px);
     margin: 53px 0 120px;
 }

@@ -4,6 +4,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { Header, Footer } from '../components/Components';
 import { AboutUs, Contacts, Directions, Events, Blog, Main, Event, NotFoundPage, Blogevent } from '../pages/pages';
 import { PopupParty } from '../components/PopupForParty/PopupforParty';
+import { CurrentLocation } from '../components/CurrentLocation/CurrentLocation';
 
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
     <div className='page'>
       <Header />
       <div className='content'>
-        {/* <PopupParty isOpen={true} closePopup={() => {}}/> */}
+      <CurrentLocation />
       <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/events' element={<Events />} />
