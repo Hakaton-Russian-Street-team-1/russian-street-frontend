@@ -85,13 +85,21 @@ export function Regpopup({ closePopup, isOpen, openLoginPopup }: RegpopupProps) 
     switch (name) {
       case 'surname':
       case 'name':
-      case 'patronymic':
-        if (!/^[А-Яа-яЁё]+$/.test(value as string)) {
-          errors[name] = `${name === 'surname' ? 'Фамилия' : name === 'name' ? 'Имя' : 'Отчество'} должно содержать только кириллические буквы`;
+        if (!/^[А-ЯЁ][а-яё]*$/.test(value as string)) {
+          errors[name] = `${name === 'surname' ? 'Фамилия' : 'Имя'} должно начинаться с заглавной буквы и содержать только кириллические буквы`;
         } else if ((value as string).length < 2) {
-          errors[name] = `${name === 'surname' ? 'Фамилия' : name === 'name' ? 'Имя' : 'Отчество'} должно быть не короче 2 символов`;
+          errors[name] = `${name === 'surname' ? 'Фамилия' : 'Имя'} должно быть не короче 2 символов`;
         } else {
           delete errors[name];
+        }
+        break;
+      case 'patronymic':
+        if (value && !/^[А-ЯЁ][а-яё]*$/.test(value as string)) {
+          errors.patronymic = 'Отчество должно начинаться с заглавной буквы и содержать только кириллические буквы';
+        } else if (value && (value as string).length < 2) {
+          errors.patronymic = 'Отчество должно быть не короче 2 символов';
+        } else {
+          delete errors.patronymic;
         }
         break;
       case 'phone':
@@ -217,7 +225,7 @@ export function Regpopup({ closePopup, isOpen, openLoginPopup }: RegpopupProps) 
         email: formData.email,
         first_name: formData.name,
         last_name: formData.surname,
-        middle_name: formData.patronymic,
+        middle_name: formData.patronymic || '', // Отчество может быть пустым
         date_of_birth: formData.dob,
         phone_number: formData.phone,
         city: formData.city,

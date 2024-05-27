@@ -66,10 +66,6 @@ export async function postRegister(data: UserAccount): Promise<AuthResponse> {
       return responseBody;
     } else {
       let errorMessage = 'Произошла ошибка';
-      if (responseBody.first_name) errorMessage = responseBody.first_name.join(', ');
-      else if (responseBody.last_name) errorMessage = responseBody.last_name.join(', ');
-      else if (responseBody.middle_name) errorMessage = responseBody.middle_name.join(', ');
-      else if (responseBody.date_of_birth) errorMessage = responseBody.date_of_birth.join(', ');
       throw new Error(errorMessage);
     }
   } catch (err) {
