@@ -17,6 +17,7 @@ import { CheckBox } from '../../UI/CheckBox/CheckBox';
 import { getNews } from '../../utils/newsApi/newsApi';
 import { Popuplogin } from '../../components/PopupLogin/Popuplogin';
 import { isAuthenticated } from '../../utils/token';
+import RussianSreetVideo from '../../video/RussianSreetVideo.mp4';
 
 export function Main() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -57,10 +58,14 @@ export function Main() {
     <>
       <main className='main'>
         <div className='main__participate'>
+        <video autoPlay muted loop className='main__participate-video'>
+            <source src={RussianSreetVideo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
           <div className='main__participate-container'>
             <img src={logo} alt="logo"/>
             <p className='main__participate-text'>Общероссийская общественная организация уличной культуры и спорта</p>
-            <Button onClick={handleButtonClick}>Участвовать</Button>
+            <Button onClick={handleButtonClick}>Вступить</Button>
           </div>
         </div>
 
