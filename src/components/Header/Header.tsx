@@ -47,7 +47,9 @@ export function Header() {
     <>
       <header className='header'>
         <div className='header__content'>
-          <img className='header__logo' src={logo} alt="Logo"/>
+        <a href="https://streetsrussia.sytes.net/">
+            <img className='header__logo' src={logo} alt="Logo"/>
+          </a>
           {screenWidth > 768 ? (
             <Menu openLoginPopup={openLoginPopup} />
           ) : (
