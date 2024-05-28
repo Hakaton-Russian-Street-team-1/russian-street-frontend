@@ -18,46 +18,40 @@
 
 ## Макет:
 
-[Сылка на макет в Figma](https://www.figma.com/file/77nFBA1Pwa1z36AfKEBdMC/%D0%A5%D0%B0%D0%BA%D0%B0%D1%82%D0%BE%D0%BD-%D0%92%D0%B8%D0%BD%D0%BA?type=design&node-id=0-1&mode=design&t=Kt8acsqnrpes1AxL-0)
+[Сылка на макет в Figma](https://www.figma.com/design/Gc7BEDupuyeKnftsaE1aXp/Команда-№1%2C-проект-%22Улицы-России%22?node-id=124-4)
 
 ## Ссылка на Github Pages:
 
-Посмотреть сайт: [https://hackathon-vink-team-3.github.io/chat-bot-frontend/](https://hackathon-vink-team-3.github.io/chat-bot-frontend/)
+Посмотреть сайт: [https://streetsrussia.sytes.net/](https://streetsrussia.sytes.net/)
 
 ## Инструкции по установке и запуску:
 
 1. Клонируйте репозиторий: `git clone git@github.com:hackathon-Vink-Team-3/chat-bot-frontend.git`
 2. Перейдите в директорию проекта: `cd chat-bot-frontend`
 3. Установите зависимости: `npm install`
-4. Запустите проект: `npm start`
+4. Запустите проект: `npm run start`
 5. В браузере открываем `http://localhost:3000/`
 
 Или
 
 ### ЧТОбЫ СДЕЛАТЬ БИЛД НА СЕРВЕРЕ
 
-1. Клонируйте репозиторий: `git clone git@github.com:hackathon-Vink-Team-3/chat-bot-frontend.git`
-2. Перейдите в директорию проекта: `cd chat-bot-frontend`
+1. Клонируйте репозиторий: `git clone git@github.com:Hakaton-Russian-Street-team-1/russian-street-frontend.git`
+2. Перейдите в директорию проекта: `cd russian-street-frontend`
 4. Сделайте билд: `npm run build`
 5. Скопируйте ссылку на билд, пропишите путь к билду в конфиге nginx
 
-1. Переходим по этой ссылке: `https://github.com/hackathon-Vink-Team-3/chat-bot-frontend.git`
+Или
+
+### ЧТОбЫ ОТКРЫТЬ НА СВОЕМ КОМПЬЮТЕРЕ
+
+1. Переходим по этой ссылке: `https://github.com/Hakaton-Russian-Street-team-1/russian-street-frontend.git`
 2. Нажимаем `Code`
 3. Нажимаем `Download ZIP`
 4. Распаковываем скачанный архив в любое удобное место
 5. Заходим в `Visual Studio Code`, в разделе `Файл` выбираем `Открыть папку`, выбираем распакованную папку, жмём `Ok`
 6. В разделе `Терминал` выбираем `Создать терминал`
-7. Пишем в терминале: `cd chat-bot-frontend`
+7. Пишем в терминале: `cd russian-street-frontend`
 8. Установка зависимости: `npm install`
-9. Запуск проект: `npm start`
+9. Запуск проект: `npm run start`
 10. В браузере открываем `http://localhost:3000/`
-
-## Ключевые точки для медиа min: 500px, max-width: 1440px
-![alt text](./src/assets/decstop.png)
-![alt text](./src/assets/decstop%202.png)
-![alt text](./src/assets/desctop%203.png)
-![alt text](./src/assets/decstop%204.png)
-![alt text](./src/assets/decstop%205.png)
-![alt text](./src/assets/decstop%206.png)
-![alt text](./src/assets/mobile%20.png)
-![alt text](./src/assets/mobile%201.png)
