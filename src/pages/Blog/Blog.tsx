@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Blog.css';
 import Blogmain from '../../images/Blogmain.png';
@@ -17,7 +17,6 @@ interface NewsItem {
 }
 
 export function Blog() {
-  const [showNews, setShowNews] = useState(false);
   const [news, setNews] = useState<NewsItem[]>([
     {
       id: 1,
@@ -93,32 +92,8 @@ export function Blog() {
     }
   ]);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowNews(true);
-    }, 5000); // Покажет новости через 5 секунд
-
-    // Закомментированный код для получения данных с бэка
-    /*
-    const fetchNews = async () => {
-      try {
-        const response = await fetch('YOUR_BACKEND_API_URL'); // Замените на ваш URL API
-        const data = await response.json();
-        setNews(data);
-        setShowNews(true);
-      } catch (error) {
-        console.error('Error fetching news:', error);
-      }
-    };
-
-    fetchNews();
-    */
-
-    return () => clearTimeout(timer);
-  }, []);
-
   const renderNewsRow = (newsItems: NewsItem[]) => (
-    <div className="blog__card">
+    <div className="blog__card" key={newsItems[0].id}>
       {newsItems.map((item: NewsItem) => (
         <Link to={`/blog/${item.id}`} key={item.id} className={`blog__card-item blog__card1--${item.size}`}>
           <div className="blog__card1">
@@ -143,29 +118,14 @@ export function Blog() {
 
   return (
     <section className="blog">
-      {!showNews && (
-        <div className="blog__no-news-container">
-          <div className="blog__no-news">
-            Пока у нас нет <br /> новостей:(
-          </div>
-          <div className="blog__no-news-subtitle">
-            Они обязательно скоро появятся, а пока вы можете вернуться на{' '}
-            <Link to="/" className="blog__no-news-link">главную страницу</Link>.
-          </div>
-        </div>
-      )}
-      {showNews && (
-        <>
-          <div className="blog__city">г. Кемерово</div>
-          <div className="blog__title">Как прошёл мастер-класс по граффити с детьми 7-10 лет</div>
-          <div className="blog__date">16.05.2024</div>
-          <div className="blog__image">
-            <img src={Blogmain} alt="Graffiti workshop" />
-          </div>
+      <div className="blog__city">г. Кемерово</div>
+      <div className="blog__title">Как прошёл мастер-класс по граффити с детьми 7-10 лет</div>
+      <div className="blog__date">16.05.2024</div>
+      <div className="blog__image">
+        <img src={Blogmain} alt="Graffiti workshop" />
+      </div>
 
-          {renderNews()}
-        </>
-      )}
+      {renderNews()}
     </section>
   );
 }
