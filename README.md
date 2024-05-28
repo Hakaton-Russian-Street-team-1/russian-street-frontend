@@ -20,9 +20,9 @@
 
 [Сылка на макет в Figma](https://www.figma.com/design/Gc7BEDupuyeKnftsaE1aXp/Команда-№1%2C-проект-%22Улицы-России%22?node-id=124-4)
 
-## Ссылка на Github Pages:
+## Посмотреть сайт:
 
-Посмотреть сайт: [https://streetsrussia.sytes.net/](https://streetsrussia.sytes.net/)
+[https://streetsrussia.sytes.net/](https://streetsrussia.sytes.net/)
 
 ## Инструкции по установке и запуску:
 
@@ -43,7 +43,7 @@
 
 Или
 
-### ЧТОбЫ ОТКРЫТЬ НА СВОЕМ КОМПЬЮТЕРЕ
+### ЧТОбЫ ОТКРЫТЬ НА СВОЕМ КОМПЬЮТЕРЕ (подробный вариант)
 
 1. Переходим по этой ссылке: `https://github.com/Hakaton-Russian-Street-team-1/russian-street-frontend.git`
 2. Нажимаем `Code`
