@@ -39,7 +39,7 @@ export function Main() {
   };
 
   function generateGrayText(repeatCount: number) {
-    const text = 'Кемерово '.repeat(repeatCount);
+    const text = 'Мир улиц '.repeat(repeatCount);
     return <span className="skate-event__text">{text}</span>;
   }
 
@@ -81,7 +81,7 @@ export function Main() {
             <img src={right} alt="Search" className='neyro__search-icon'/>
           </button>
         </div>
-        <p className='neyro__description'> Экстремальные состязания пройдут в обычном зачете для всех, а также выделена отдельно детская номинация; - Мастер-классы и показательные выступления от сборной России по скейтборду, Центра экстремального спорта «Спортэкс» г. Красноярск; - Крутые призы и подарки от партнеров</p>
+        <p className='neyro__description'> Экстремальные состязания пройдут в обычном зачете для всех, а также выделена отдельно детская номинация;- Мастер-классы и показательные выступления от сборной России по скейтборду, Центра экстремального спорта «Спортэкс» г. Красноярск;- Крутые призы и подарки от партнеров</p>
       </div>
       <img src={soon} alt="Soon" className='neyro__image'/>
     </div>

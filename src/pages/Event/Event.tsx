@@ -107,7 +107,7 @@ export function Event() {
 }
 
 function generateGrayText(repeatCount: number) {
-  const text = 'Кемерово '.repeat(repeatCount);
+  const text = 'Мир улиц '.repeat(repeatCount);
   return <span className="skate-event__text">{text}</span>;
 }
 
