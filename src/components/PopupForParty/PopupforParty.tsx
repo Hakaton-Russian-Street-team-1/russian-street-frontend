@@ -59,8 +59,6 @@ export function PopupParty({ isOpen, closePopup }: PopupPartyProps) {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log('Имя:', name);
-    console.log('Номер телефона:', phoneNumber);
     setName('');
     setPhoneNumber('');
     setRegistrationSuccess(true);

@@ -19,7 +19,7 @@ export function EventCard({ id, title, files, start_datetime, location } : Event
     }, [])
 
     return (
-          <li className="event-card__ivent">
+          <li className="event-card__event">
             <Link to={`/events/${id}`} className='link'>
             { files !== undefined && files.length > 0 && <img src={files[0].file} className="event-card__image" />}
             <p className="event-card__title">{title}</p>

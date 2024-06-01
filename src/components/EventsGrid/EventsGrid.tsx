@@ -47,7 +47,7 @@ export function EventsGrid() {
 
   }, [])
 
-  const { changeRegion } = UseFilter();
+  const { changeRegion, changeCity } = UseFilter();
 
 //   async function getFilterEvent() {
 // const baseUrl = 'https://streetsrussia.sytes.net/api/v1'
@@ -73,10 +73,10 @@ export function EventsGrid() {
       <div className="events-grid__menu">
 
         {/* Сортировка событий */}
-        <Select defaultOption={'Выбрать регион'} options={regionList}/>
-        <Select defaultOption={'Выбрать город'} options={cityList}/>
-        <Select defaultOption={'Направление'} options={directions}/>
-        <Select defaultOption={'Сначала популярные'} options={['Сначала новые']}/>
+        <Select defaultOption={'Выбрать регион'} options={regionList} type='region' onChange={changeRegion}/>
+        <Select defaultOption={'Выбрать город'} options={cityList} type='city' onChange={changeCity}/>
+        <Select defaultOption={'Направление'} options={directions} type='directions'/>
+        <Select defaultOption={'Сначала популярные'} options={['Сначала новые']} type='popular'/>
 
       </div>
 

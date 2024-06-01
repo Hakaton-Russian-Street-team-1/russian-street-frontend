@@ -23,6 +23,7 @@
 .events-grid__list{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(286px,1fr));
+    grid-template-rows: repeat(auto-fit, 444px);
     gap: 60px 20px;
     margin: 0;
 }

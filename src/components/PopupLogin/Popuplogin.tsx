@@ -103,7 +103,7 @@ export function Popuplogin({ closePopup, isOpen }: PopuploginProps) {
   };
 
   useEffect(() => {
-    console.log('Popuplogin rendered, isOpen:', isOpen);
+    // console.log('Popuplogin rendered, isOpen:', isOpen);
   }, [isOpen]);
 
   return (

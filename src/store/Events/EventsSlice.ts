@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getEvents, getEventsByRegion } from '../../utils/EventsApi/EventsApi';
+import { getCityByRegion, getEvents, getEventsByRegion } from '../../utils/EventsApi/EventsApi';
 import { EventType } from '../../types/EventType';
 
 export interface UserState {
@@ -26,6 +26,13 @@ export const filterByRegion = createAsyncThunk(
       return response;
 });
 
+export const filterByCity = createAsyncThunk(
+  'events/filterByCity',
+  async (id:number) => {
+    const response = await getCityByRegion(id);  
+    return response;
+});
+
 
 export const eventsSlice = createSlice({
     name: 'user',
@@ -42,7 +49,6 @@ export const eventsSlice = createSlice({
           .addCase(getEventsAsync.fulfilled, (state, action) => {
             state.status = 'idle';
             state.value = action.payload;
-            console.log(action.payload)
           })
           .addCase(getEventsAsync.rejected, (state) => {
             state.status = 'failed';
@@ -57,6 +63,17 @@ export const eventsSlice = createSlice({
             state.value = action.payload;
           })
           .addCase(filterByRegion.rejected, (state) => {
+            state.status = 'failed';
+          })
+
+          .addCase(filterByCity.pending, (state) => {
+            state.status = 'loading';
+          })
+          .addCase(filterByCity.fulfilled, (state, action) => {
+            state.status = 'idle';
+            state.value = action.payload;
+          })
+          .addCase(filterByCity.rejected, (state) => {
             state.status = 'failed';
           });
 
