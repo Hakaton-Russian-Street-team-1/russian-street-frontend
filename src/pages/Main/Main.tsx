@@ -17,6 +17,9 @@ import { CheckBox } from '../../UI/CheckBox/CheckBox';
 import { getNews } from '../../utils/newsApi/newsApi';
 import { Popuplogin } from '../../components/PopupLogin/Popuplogin';
 import { isAuthenticated } from '../../utils/token';
+import RussianSreetVideo from '../../video/RussianSreetVideo.mp4';
+import right from '../../pages/Main/images/right.svg';
+import soon from '../../pages/Main/images/soon.svg';
 
 export function Main() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -57,14 +60,33 @@ export function Main() {
     <>
       <main className='main'>
         <div className='main__participate'>
+        <video autoPlay muted loop className='main__participate-video'>
+            <source src={RussianSreetVideo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
           <div className='main__participate-container'>
             <img src={logo} alt="logo"/>
             <p className='main__participate-text'>Общероссийская общественная организация уличной культуры и спорта</p>
-            <Button onClick={handleButtonClick}>Участвовать</Button>
+            <Button onClick={handleButtonClick}>Вступить</Button>
           </div>
         </div>
 
-        <div className='main__neyro'></div>
+        <div className='main__neyro'>
+      <img src={soon} alt="Soon" className='neyro__image'/>
+      <div className='neyro__search-container'>
+        <p className='neyro__title'>ПОДБОР МЕРОПРИЯТИЙ НЕЙРОСЕТЬЮ</p>
+        <div className='neyro__search-box'>
+          <input type="text" className='neyro__search-input' placeholder='Расскажи, что тебе нравится'/>
+          <button className='neyro__search-button'>
+            <img src={right} alt="Search" className='neyro__search-icon'/>
+          </button>
+        </div>
+        <p className='neyro__description'> Экстремальные состязания пройдут в обычном зачете для всех, а также выделена отдельно детская номинация; - Мастер-классы и показательные выступления от сборной России по скейтборду, Центра экстремального спорта «Спортэкс» г. Красноярск; - Крутые призы и подарки от партнеров</p>
+      </div>
+      <img src={soon} alt="Soon" className='neyro__image'/>
+    </div>
+
+
 
         <div className="skate-event">
           <div className="skate-event__text-block skate-event__text-block--gray">{generateGrayText(20)}</div>

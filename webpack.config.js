@@ -6,7 +6,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  entry:  path.resolve(__dirname, './src/index.tsx'),
+  entry: path.resolve(__dirname, './src/index.tsx'),
   mode: "development",
   devServer: {
     historyApiFallback: true,
@@ -34,13 +34,24 @@ module.exports = {
       {
         test: /\.(png|jpg|jpeg|svg|gif|webp)$/,
         type: 'asset/resource'
-    },
-
+      },
+      {
+        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[hash].[ext]',
+              outputPath: 'media/'
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './public/index.html'), 
+      template: path.resolve(__dirname, './public/index.html'),
       favicon: 'src/images/favicon.png'
     }),
     new CleanWebpackPlugin(),
