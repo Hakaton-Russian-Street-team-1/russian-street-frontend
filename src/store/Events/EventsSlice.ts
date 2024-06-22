@@ -33,12 +33,14 @@ export const filterByCity = createAsyncThunk(
     return response;
 });
 
-
 export const eventsSlice = createSlice({
     name: 'user',
     initialState,
     reducers:{
-      
+      filterByDirection(state) {
+        //ДОРАБОТАТЬ
+        console.log(state.value)
+      }
     },
     extraReducers: (builder) => {
         builder
@@ -78,10 +80,9 @@ export const eventsSlice = createSlice({
           });
 
 
-
       },
 })
 
-export const {  } = eventsSlice.actions;
+export const { filterByDirection } = eventsSlice.actions;
 
 export default eventsSlice.reducer;

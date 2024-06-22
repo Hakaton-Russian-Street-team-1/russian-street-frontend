@@ -11,7 +11,7 @@ import { getCity, getRegion } from '../../utils/RegionsApi/RegionsApi';
 import { RegionType } from '../../types/RegionType';
 import { UseFilter } from '../../app/hooks/UseFilter';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { getEventsAsync } from '../../store/Events/EventsSlice';
+import { filterByDirection, getEventsAsync } from '../../store/Events/EventsSlice';
 
 export function EventsGrid() {
 
@@ -29,45 +29,26 @@ export function EventsGrid() {
     dispatch(getEventsAsync());
 
     let desciplineRes = await getDescipline();
-    const descipline = desciplineRes.map((item:any) => item.name);
+    const descipline = desciplineRes !== undefined && desciplineRes.map((item:any) => item.name);
     setDirections(descipline);
 
     let subDiscipline = await getSubDescipline();
     setSubDiscipline(subDiscipline);
-    let idArray = desciplineRes.map((item:{id:number}) => item.id);
+    let idArray = desciplineRes !== undefined && desciplineRes.map((item:{id:number}) => item.id);
     setDisciplineId(idArray);
 
     let regionsRes = await getRegion();
-    const regions = regionsRes.map((item:RegionType) => item.name);
+    const regions = regionsRes !== undefined && regionsRes.map((item:RegionType) => item.name);
     setRegionList(regions);
     
     let cityRes = await getCity();
-    const cities = cityRes.map((item:RegionType) => item.name);
+    const cities = cityRes !== undefined && cityRes.map((item:RegionType) => item.name);
     setCityList(cities);
 
   }, [])
 
   const { changeRegion, changeCity } = UseFilter();
-
-//   async function getFilterEvent() {
-// const baseUrl = 'https://streetsrussia.sytes.net/api/v1'
-//     let res = await fetch(`${baseUrl}/events/?location.id=1`, {
-//       method: 'GET'
-//   });
-//   if(res.ok){
-//       let data = await res.json();
-//       return data;
-//   } else {
-//       throw new Error('Произошла ошибка');
-//   }
-//   }
-
-//   useMemo(async() => {
-//     let res = await getFilterEvent()
-//     console.log(res);
-//   }, [])
-
-
+  
   return (
     <section className="events-grid">
       <div className="events-grid__menu">
@@ -75,8 +56,8 @@ export function EventsGrid() {
         {/* Сортировка событий */}
         <Select defaultOption={'Выбрать регион'} options={regionList} type='region' onChange={changeRegion}/>
         <Select defaultOption={'Выбрать город'} options={cityList} type='city' onChange={changeCity}/>
-        <Select defaultOption={'Направление'} options={directions} type='directions'/>
-        <Select defaultOption={'Сначала популярные'} options={['Сначала новые']} type='popular'/>
+        <Select defaultOption={'Направление'} options={directions} type='directions' onChange={() => {dispatch(filterByDirection())}}/>
+        <Select defaultOption={'Сначала популярные'} options={['Сначала новые']} type='popular' onChange={() => {console.log('ff')}}/>
 
       </div>
 
@@ -95,14 +76,14 @@ export function EventsGrid() {
               </div>
             </div>
 
-            { disciplineId && disciplineId.map(id => <CheckboxFieldset disciplineId={id} subDiscipline={subDiscipline} key={id}/>)
+            { disciplineId !== undefined && disciplineId?.map(id => <CheckboxFieldset disciplineId={id} subDiscipline={subDiscipline} key={id}/>)
             }
         </div>
         
               {/* Основная сетка с событиями */}
         <ul className="events-grid__list list-style">
-          {/* @ts-ignore */}
-          { events?.map((event: EventType , index:number) => (
+    
+          { events !== undefined && events?.map((event: EventType , index:number) => (
             <EventCard id={event.id} key={event.id} title={event.title} 
             files={event.files} start_datetime={event.start_datetime}
             location={event.location}
@@ -111,26 +92,6 @@ export function EventsGrid() {
         </ul>
 
       </div>
-
-      {/* Сетка событий с блоком анимации   */}
-      {/* <ul className="events-grid__list_type_animaton list-style">
-
-        <li className="events-grid__ivent">
-            <img src={testImage} className="events-grid__image" />
-            <p className="events-grid__title">Открытие скейтпарка в Кемерово</p>
-            <p className="events-grid__subtitle">15 июня, г. Кемерово</p>
-        </li>
-
-        <li className="events-grid__ivent_type_animation">
-
-        </li>
-
-        <li className="events-grid__ivent">
-            <img src={testImage} className="events-grid__image" />
-            <p className="events-grid__title">Открытие скейтпарка в Кемерово</p>
-            <p className="events-grid__subtitle">15 июня, г. Кемерово</p>
-        </li>
-      </ul> */}
 
     </section>
   )
